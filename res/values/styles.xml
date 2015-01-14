@@ -1,6 +1,10 @@
 <resources>
 
-      <style name="AppBaseTheme" parent="Theme.AppCompat.Light">
+    <!--
+        Base application theme, dependent on API level. This theme is replaced
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+    -->
+    <style name="AppBaseTheme" parent="Theme.AppCompat.Light">
         <!--
             Theme customizations available in newer API levels can go in
             res/values-vXX/styles.xml, while customizations related to
@@ -12,22 +16,20 @@
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
-      <!-- relativelayout  row holder -->
-      
-    <style name="row_style">
+   <style name="row_style">
         	
            
            <item name="android:alpha">0.3</item>
            <item name="android:layout_width">@dimen/linearlayout_row_width</item>
            <item name="android:layout_height">@dimen/linearlayout_row_height</item>
-          <!-- <item name="android:background">@color/container_color</item> -->
+           <item name="android:background">@color/container_color</item> 
   
     </style>
     
     <style name="element">
         <item name="android:layout_width">@dimen/place_width</item>
         <item name="android:layout_height">@dimen/place_height</item>
-        <!-- <item name="android:background">@color/cell_color</item> -->
+         <item name="android:background">@color/cell_color</item> 
     </style>
  		
     
@@ -47,5 +49,4 @@
     <style name="element.textview_end_element">
         <item name="android:layout_alignParentRight">true</item> 
     </style>
-
 </resources>

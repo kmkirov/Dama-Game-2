@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-     <color name="cell_color">#ffffff</color>
-     <color name="container_color">#ffffff</color>
+     <color name="cell_color">#0f0ff0</color>
+     <color name="container_color">#f000ff</color>
 </resources>

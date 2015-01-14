@@ -1,0 +1,229 @@
+<LinearLayout
+     xmlns:android = "http://schemas.android.com/apk/res/android"
+     xmlns:tools = "http://schemas.android.com/tools"
+     tools:context = "com.example.dama.MainActivity"
+     android:layout_width = "match_parent"
+     android:layout_height = "match_parent"
+     android:orientation = "vertical"
+     
+      > 
+<RelativeLayout
+   
+    android:layout_width = "@dimen/linearlayout_width"
+    android:layout_height = "@dimen/linearlayout_height"
+    android:layout_gravity = "center_horizontal"
+    android:background = "@drawable/dama">
+       
+     <!-- първи ред -->
+     <RelativeLayout 
+       		android:id = "@+id/purvo"
+       		style = "@style/row_style">
+	       <TextView 
+	            android:id = "@+id/a1"
+	            style = "@style/element.textview_first_element"
+	        />
+	        <TextView 
+	            android:id = "@+id/a2"
+	            style = "@style/element.textview_center_element"
+	         />
+	         <TextView 
+					android:id = "@+id/a3"
+	            	style = "@style/element.textview_end_element"
+	         />
+     </RelativeLayout>
+        
+     <!-- среден ред -->
+     <LinearLayout 
+            style = "@style/row_style"
+            android:layout_centerInParent = "true"
+            android:id = "@+id/vtoro"
+            android:orientation = "horizontal">
+   		   
+       		<TextView 
+            	android:id = "@+id/a8"
+             	style = "@style/element.textview_first_element"
+             />
+        	<TextView 
+            	android:id = "@+id/b8"
+            	style = "@style/element"
+            	android:layout_marginLeft = "17dp"
+            />
+         	<TextView 
+           		android:id = "@+id/c8"
+           		style = "@style/element"
+           		android:layout_marginLeft = "17dp"
+           	/>
+           	<TextView 
+            	android:id = "@+id/c4"
+            	style = "@style/element"
+            	android:layout_marginLeft = "82dp"
+            />
+         	<TextView 
+           		android:id = "@+id/b4"
+           		style = "@style/element"
+           		android:layout_marginLeft = "17dp"
+            />
+         	<TextView 
+           		android:id = "@+id/a4"
+           		style = "@style/element"
+           		android:layout_marginLeft = "17dp"
+            />
+     </LinearLayout>
+       
+  	 <!-- последен ред -->
+     <RelativeLayout 
+           android:layout_alignParentBottom = "true"
+           android:id = "@+id/tri"
+           style = "@style/row_style">
+   		   
+	       <TextView 
+	            android:id = "@+id/a7"
+	            style = "@style/element.textview_first_element"
+	       />
+	       <TextView 
+	            android:id = "@+id/a6"
+	            style = "@style/element.textview_center_element"
+	       />
+          <TextView 
+            	android:id = "@+id/a5"
+            	style = "@style/element.textview_end_element"
+           />
+     </RelativeLayout>
+        <!-- втори ред -->
+     <RelativeLayout 
+           android:id = "@+id/purvi_vutreshen"
+           android:layout_below = "@id/purvo"
+           android:layout_marginTop = "17dp"
+           style = "@style/row_style">
+   		   
+	       <TextView 
+	            android:id = "@+id/b1"
+	            style = "@style/element"
+	            android:layout_marginLeft = "42dp"
+	       />
+	        <TextView 
+	           	android:id = "@+id/b2"
+	           	style = "@style/element.textview_center_element"
+	        />
+         	<TextView 
+           		android:id = "@+id/b3"
+           		style = "@style/element"
+           		android:layout_marginLeft = "231dp"
+            />
+    </RelativeLayout>   
+ 	<!-- трети ред -->
+    <RelativeLayout 
+           android:id = "@+id/vtori_vutreshen"
+           android:layout_below = "@id/purvi_vutreshen"
+           android:layout_marginTop = "15dp"
+       		style = "@style/row_style">
+	       <TextView 
+	            android:id = "@+id/c1"
+	            style = "@style/element"
+	            android:layout_marginLeft = "85dp"
+	       />
+	       <TextView 
+	            android:id = "@+id/c2"
+	            style = "@style/element.textview_center_element"
+	       />
+	       <TextView 
+	            android:id = "@+id/c3"
+	            style = "@style/element"
+	            android:layout_marginLeft = "190dp"
+	       />
+     </RelativeLayout>       
+        
+     <!-- първи ред след средата -->
+     <RelativeLayout 
+           android:id = "@+id/treti_vutreshen"
+           android:layout_below = "@id/vtoro"
+           android:layout_marginTop = "29dp"
+           style = "@style/row_style">
+   		   
+	       <TextView 
+	            	android:id = "@+id/c7"
+	            	style = "@style/element"
+	            	android:layout_marginLeft = "85dp"
+	           />
+	        <TextView 
+	            	android:id = "@+id/c6"
+	            	style = "@style/element.textview_center_element"
+	           />
+	         <TextView 
+	            	android:id = "@+id/c5"
+	           		style = "@style/element"
+	           		android:layout_marginLeft = "190dp"
+	           />
+     </RelativeLayout>   
+ 	 <!-- втори ред след средата -->
+	 <RelativeLayout 
+	           android:id = "@+id/chetvurti_vutreshen"
+	           android:layout_below = "@id/treti_vutreshen"
+	           android:layout_marginTop = "15dp"
+	           style = "@style/row_style">
+	         
+		       <TextView 
+		            android:id = "@+id/b7"
+		            style = "@style/element"
+	           		android:layout_marginLeft = "42dp"
+		       />
+		       <TextView 
+		            android:id = "@+id/b6"
+		            style = "@style/element.textview_center_element"
+		       />
+		       <TextView 
+		            android:id = "@+id/b5"
+		            style = "@style/element"
+           			android:layout_marginLeft = "231dp"
+		       />
+	  </RelativeLayout> 
+	
+		
+</RelativeLayout>
+	
+<TextView 
+		 android:id = "@+id/messages"
+		 android:layout_below = "@id/chetvurti_vutreshen"
+		 android:paddingTop="20dp"
+		 android:layout_width = "wrap_content"
+         android:layout_height = "wrap_content"
+    	 android:textSize="17sp"
+    	 android:text = "kude si ?"
+    	        
+	/>
+	<TextView 
+	    android:layout_marginTop="10dp"
+		 android:id = "@+id/textview_current_player"
+		 android:layout_width = "wrap_content"
+         android:layout_height = "wrap_content"
+         android:textSize="17sp"
+          android:text = "kude si ?"
+         
+	/>
+	<LinearLayout 
+	    android:layout_marginTop="30dp"
+	    android:layout_width = "match_parent"
+     	android:layout_height = "match_parent"
+     	android:orientation = "horizontal"
+	    >
+	    <TextView 
+		 android:id = "@+id/textview_avalable_white"
+		 android:layout_width = "wrap_content"
+         android:layout_height = "wrap_content"
+         android:textSize="17sp"
+     	 android:text = "kude si ?"
+	/>
+	    <TextView 
+		 android:id = "@+id/textview_avalible_red"
+		 android:layout_width = "wrap_content"
+         android:layout_height = "wrap_content"
+    	 android:textSize="17sp"
+         android:text = "kude si ?"
+	/>
+	    
+	    
+	</LinearLayout>
+	
+
+	    
+</LinearLayout>
