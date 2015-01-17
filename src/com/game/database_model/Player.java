@@ -2,11 +2,12 @@ package com.game.database_model;
 
 public class Player {
 	
-	private long mId;
-	public long getmId() {
+	private int mId;
+	
+	public int getmId() {
 		return mId;
 	}
-	public void setmId(long mId) {
+	public void setmId(int mId) {
 		this.mId = mId;
 	}
 	private String player_name;

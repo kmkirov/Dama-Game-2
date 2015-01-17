@@ -11,6 +11,9 @@
     <string name="enter_username">Enter username</string>
     <string name="Player_one">Enter Player 1</string>
     <string name="Player_two">Enter Player 2</string>
+    <string name="resing_button_text">Resign from game</string>
+    <string name="first_player_name">%1$s   vs   %2$s</string>    
+    <string name="animation_winner">Winner is %1$s</string>
    
 
 </resources>

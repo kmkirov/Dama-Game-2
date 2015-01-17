@@ -2,16 +2,26 @@ package com.game.damagame;
 
 import java.util.ArrayList;
 
-import CustomView.CustomTextView;
+import com.game.animation.CustomViewWinner;
+import com.game.constants.GameConstants;
+import com.game.database.PlayerDatabaseHelper;
+
+
 import android.app.Activity;
+
 import android.content.Intent;
 
 
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
+
+import android.view.animation.AnimationSet;
+
+import android.view.animation.ScaleAnimation;
+import android.view.animation.TranslateAnimation;
+
+import android.widget.Button;
 import android.widget.TextView;
 
 
@@ -48,14 +58,16 @@ public class DamaGame extends Activity implements OnClickListener
 	private TextView c8;
 	//end board
 	
-	private TextView gameMessages;
-	private TextView player1_name;
+	private TextView gameMessages, anticrash_redchip, anticrash_blue_chip, anticrash_text_players;
+	private String first_player_name, second_player_name;
+	private Button resing_button;
+	//private TextView player1_name;
 	private int first_part_game = 1;//1 first part, 0 second part
-	private final String mesg_intent = "Player Names";
+	//private final String mesg_intent = "Player Names";
 	
 	
-	private int counter_red = 9, //9,
-				counter_blue =9,// 9,
+	private int counter_red = 4, //9,
+				counter_blue =4,// 9,
 				need_delete = 0, //if player have 3 in a row :)
 				firstplayer_turn = 1,//1 true redchip , 2 second player turn bluechip
 				countPlayingRed = 0, /// all playing -- when given
@@ -73,12 +85,57 @@ public class DamaGame extends Activity implements OnClickListener
 	int avalablechip = R.drawable.available;
 	int cleanChip = R.drawable.free;
 	int store_selected_color = 0;
+	
+	 CustomViewWinner animatedImage;
+	 
+	 
+	 void write_changes_to_db(String winner, String looser)
+	 {
+		 PlayerDatabaseHelper.addPlayerInfoOnWin(this, winner,  "16",GameConstants.WINS_TYPE);
+		 PlayerDatabaseHelper.addPlayerInfoOnWin(this, looser,  "16",GameConstants.LOOSES_TYPE);
+		 animatedImage.updateState(winner);
+	 }
+	 
+	 
+	private boolean end_game()
+	{
+		if(firstplayer_turn == 1 && countPlayingRed < 3 && first_part_game!=1 || !playerHasPosibleMove())/// first loose
+			write_changes_to_db(second_player_name,first_player_name);
+
+		if(firstplayer_turn == 2 && countPlayingBlue < 3 && first_part_game!=1 || !playerHasPosibleMove())///second loose
+			write_changes_to_db(first_player_name,second_player_name);
+	
+		return false;
+	}
 	protected void onCreate(Bundle savedInstanceState) 
 	{
 		  
 	        super.onCreate(savedInstanceState);
 	        setContentView(R.layout.dama_game);
 	       
+	        //animation view
+	    	animatedImage = (CustomViewWinner) findViewById(R.id.animation_win_view);  	  
+	      	animatedImage.setVisibility(View.INVISIBLE);
+	      	animatedImage.setOnClickListener(this);
+	        
+	      	resing_button = (Button) findViewById(R.id.resign_button);
+	      	resing_button.setOnClickListener(this);
+	      	anticrash_redchip = (TextView) findViewById(R.id.redchip_textview);
+	      	anticrash_blue_chip = (TextView) findViewById(R.id.bluechip_textview);
+	      	anticrash_text_players = (TextView) findViewById(R.id.players_textview);
+	      	
+	      	Intent info = getIntent();
+	      	first_player_name = info.getStringExtra(GameConstants.FIRST_PLAYER_NAME);
+	      	second_player_name = info.getStringExtra(GameConstants.SECOND_PLAYER_NAME);
+	      	Object[] params = new String[] { first_player_name, second_player_name};
+	      	anticrash_text_players.setText(this.getString(R.string.first_player_name, params));
+	      	anticrash_text_players.invalidate();
+	      	
+	      	
+	      	
+	      	
+	      	
+	      	
 	    	first_part_game = 1;
 		  	firstplayer_turn = 1;
 		  	
@@ -86,10 +143,9 @@ public class DamaGame extends Activity implements OnClickListener
 		  	gameMessages = (TextView) findViewById(R.id.messages);
 		  	gameMessages.setText("game started " + "b" + 1 );
 		  	
-	        player1_name = (TextView) findViewById(R.id.textview_current_player);
-	        Intent info = getIntent();
-	        player1_name.setOnClickListener(this);
-	        player1_name.setText(info.getStringExtra(mesg_intent));
+	       
+	       
+	       
 	        
 	        a1 = (TextView) findViewById(R.id.a1);
 	        a2 = (TextView) findViewById(R.id.a2);
@@ -184,8 +240,8 @@ public class DamaGame extends Activity implements OnClickListener
 	  
 	}
 	  
-	 void putInMatrix(View v, int number, String letter)
-  {
+	void putInMatrix(View v, int number, String letter)
+	{
 	  int index = getIndexOfView(letter);
 	  
 	  if(matrix[index][number] != 0 )
@@ -366,6 +422,7 @@ public class DamaGame extends Activity implements OnClickListener
 	}
 	void secondPartOfTheGame(View v, Pair selected)
 	{	
+		end_game();
 		int current_player_color = firstplayer_turn == 1? redchip:bluechip;
 		if(need_delete == 1)
 		{
@@ -444,20 +501,37 @@ public class DamaGame extends Activity implements OnClickListener
 	public void onClick(View v) 
 	{
 		Pair selected = position_selected(v);
-		
-		if(v.getId() == player1_name.getId())
+		if(v.getId() == anticrash_redchip.getId() || v.getId() == anticrash_blue_chip.getId() 
+				|| v.getId() == anticrash_text_players.getId() )
+			return;
+		if(v.getId() == resing_button.getId())
 		{
-			player1_name.setBackgroundColor(0xfff00000);
+			 //wining animation + database update + end of game
+			if(firstplayer_turn == 1)
+				write_changes_to_db(second_player_name,first_player_name);
+			else 
+				write_changes_to_db(first_player_name, second_player_name);
+			win_animation();
+			return;
 		}
-	
+		
+		if(v.getId() == animatedImage.getId())
+		{
+			//this.finishActivity(1);
+			finish();
+		}
 		//game 
 		if(first_part_game == 1)
 		{
 			firstPartOfTheGame(v, selected);
+			replace(v);
 			return;
 		}
 		else
+		{
 			secondPartOfTheGame(v, selected);
+			replace(v);
+		}
 	}
 	
 	boolean playerHasPosibleMove()
@@ -649,21 +723,21 @@ public class DamaGame extends Activity implements OnClickListener
 		return new Pair(null,"d",-1);
 	}
 	
-	private class Coords
-	{
-		public int index, position;
-		public Coords()
-		{
-			index = -1;
-			position = -1;
-		}
-
-		public Coords(int i, int p)
-		{
-			index = i;
-			position = p;
-		}
-	}
+//	private class Coords
+//	{
+//		public int index, position;
+//		public Coords()
+//		{
+//			index = -1;
+//			position = -1;
+//		}
+//
+//		public Coords(int i, int p)
+//		{
+//			index = i;
+//			position = p;
+//		}
+//	}
 	
 	private class Pair
 	{
@@ -673,10 +747,10 @@ public class DamaGame extends Activity implements OnClickListener
 			this.letter = l;
 			this.position = p;
 		}
-		public Coords place()
-		{
-			return new Coords(getIndexOfView(letter), position);
-		}
+//		public Coords place()
+//		{
+//			return new Coords(getIndexOfView(letter), position);
+//		}
 		public boolean ravni ( Pair p)
 		{
 			if(letter == p.letter && position == p.position )
@@ -687,7 +761,86 @@ public class DamaGame extends Activity implements OnClickListener
 		public String letter;
 		public int position;
 	}
-}
+
+	
+	///animation functions
+	public void win_animation() 
+    {
+
+
+		animatedImage.setVisibility(View.VISIBLE);
+  	
+  	float xScale = 3f, yScale=3f;
+      // create set of animations
+  	AnimationSet replaceAnimation = new AnimationSet(false);
+      // animations should be applied on the finish line
+      replaceAnimation.setFillAfter(true);
+
+      // create scale animation
+      ScaleAnimation scale = new ScaleAnimation(0.0f, xScale, 0.0f, yScale);
+      scale.setDuration(300);
+
+      // create translation animation
+      TranslateAnimation trans = new TranslateAnimation(100, 0, 0, 0);
+      trans.setDuration(300);
+
+      // add new animations to the set
+      replaceAnimation.addAnimation(scale);
+      replaceAnimation.addAnimation(trans);
+
+      // start our animation
+     
+      animatedImage.startAnimation(replaceAnimation);
+    }
+  
+	///long jump not working :)
+	   public void replace(View thumbnailView) 
+	    {
+		   TextView redHelper = (TextView) findViewById(R.id.red_helper);
+		   TextView blueHelper = (TextView) findViewById(R.id.blue_helper);	   
+				   
+		   TextView animationView = firstplayer_turn == 1? redHelper : blueHelper;
+	    	
+	    	int xTo = thumbnailView.getWidth(),  yTo = thumbnailView.getHeight();
+	    	float xScale =1f, yScale = 1f;
+	        
+	    	// create set of animations
+	    	AnimationSet replaceAnimation = new AnimationSet(false);
+	        // animations should be applied on the finish line
+	        replaceAnimation.setFillAfter(false);
+
+	        // create scale animation
+	        ScaleAnimation scale = new ScaleAnimation(1.0f, xScale, 1.0f, yScale);
+	        scale.setDuration(300);
+
+	        // create translation animation
+	        TranslateAnimation trans = new TranslateAnimation(animationView.getWidth(), animationView.getHeight(),
+	        														xTo,				 yTo);
+	        trans.setDuration(300);
+
+	        // add new animations to the set
+	        replaceAnimation.addAnimation(scale);
+	        replaceAnimation.addAnimation(trans);
+
+	        // start our animation
+	        animationView.startAnimation(replaceAnimation);
+	       // animatedImage.setVisibility(View.INVISIBLE);
+	       
+	    }
+	}
+	///simple move
+//	   public void imageClicked(View thumbnailView) 
+//	    {
+//	    	  ImageView thumbnail = (ImageView)thumbnailView;
+//	    	  animatedImage = (ImageView) findViewById(R.id.animatedImage);
+//	    	  animatedImage.setImageDrawable(thumbnail.getDrawable());
+//	    	  animatedImage.setVisibility(View.VISIBLE);
+//
+//	    	  Animation animation
+//	    	    = AnimationUtils.loadAnimation(this, R.anim.anim_move);
+//	    	  animatedImage.startAnimation(animation);
+//	    	}
+
 
 
 

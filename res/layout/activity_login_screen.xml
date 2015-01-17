@@ -1,11 +1,19 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:alpha="0.9"
+    android:background="@drawable/background"
+    tools:context="${relativePackage}.${activityClass}" >
+
+<LinearLayout 
+    android:paddingTop="100dp"
     android:layout_width="@dimen/Login_linearlayout_width"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:layout_gravity="center"
-    tools:context="${relativePackage}.${activityClass}" >
-
+    android:layout_gravity="center">
+   
     <TextView
         android:id="@+id/first_player_textview"
         android:layout_width="wrap_content"
@@ -18,6 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:inputType="text"
         android:text="@string/Player_one"
         />
     
@@ -33,15 +42,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:inputType="text"
         android:text="@string/Player_two"
         />
-    <Button
-        android:id="@+id/save_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" 
-        android:layout_gravity="center"
-         android:drawableLeft="@drawable/save"
-        android:text="@string/registration"/>
+    
     
      <Button
         android:id="@+id/show_button"
@@ -64,4 +68,5 @@
      
 
 
+</LinearLayout>
 </LinearLayout>

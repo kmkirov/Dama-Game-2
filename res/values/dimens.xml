@@ -10,5 +10,9 @@
     <dimen name = "place_width">25dp</dimen>
     <dimen name = "place_height">25dp</dimen>
     <dimen name = "Login_linearlayout_width">200dp</dimen>
+    
+    
+    <dimen name = "win_animation_width">150dp</dimen>
+    <dimen name = "win_animation_height">100dp</dimen>
 
 </resources>

@@ -1,21 +1,26 @@
+
 <LinearLayout
      xmlns:android = "http://schemas.android.com/apk/res/android"
      xmlns:tools = "http://schemas.android.com/tools"
      tools:context = "com.example.dama.MainActivity"
      android:layout_width = "match_parent"
      android:layout_height = "match_parent"
+      android:animateLayoutChanges="true"
      android:orientation = "vertical"
      
       > 
+      
 <RelativeLayout
    
     android:layout_width = "@dimen/linearlayout_width"
     android:layout_height = "@dimen/linearlayout_height"
     android:layout_gravity = "center_horizontal"
+    android:animateLayoutChanges="true"
     android:background = "@drawable/dama">
        
      <!-- първи ред -->
      <RelativeLayout 
+         android:animateLayoutChanges="true"
        		android:id = "@+id/purvo"
        		style = "@style/row_style">
 	       <TextView 
@@ -34,6 +39,7 @@
         
      <!-- среден ред -->
      <LinearLayout 
+         android:animateLayoutChanges="true"
             style = "@style/row_style"
             android:layout_centerInParent = "true"
             android:id = "@+id/vtoro"
@@ -71,7 +77,8 @@
      </LinearLayout>
        
   	 <!-- последен ред -->
-     <RelativeLayout 
+     <RelativeLayout
+         android:animateLayoutChanges="true" 
            android:layout_alignParentBottom = "true"
            android:id = "@+id/tri"
            style = "@style/row_style">
@@ -91,6 +98,7 @@
      </RelativeLayout>
         <!-- втори ред -->
      <RelativeLayout 
+         android:animateLayoutChanges="true"
            android:id = "@+id/purvi_vutreshen"
            android:layout_below = "@id/purvo"
            android:layout_marginTop = "17dp"
@@ -113,6 +121,7 @@
     </RelativeLayout>   
  	<!-- трети ред -->
     <RelativeLayout 
+        android:animateLayoutChanges="true"
            android:id = "@+id/vtori_vutreshen"
            android:layout_below = "@id/purvi_vutreshen"
            android:layout_marginTop = "15dp"
@@ -135,6 +144,7 @@
         
      <!-- първи ред след средата -->
      <RelativeLayout 
+         android:animateLayoutChanges="true"
            android:id = "@+id/treti_vutreshen"
            android:layout_below = "@id/vtoro"
            android:layout_marginTop = "29dp"
@@ -157,6 +167,7 @@
      </RelativeLayout>   
  	 <!-- втори ред след средата -->
 	 <RelativeLayout 
+	     android:animateLayoutChanges="true"
 	           android:id = "@+id/chetvurti_vutreshen"
 	           android:layout_below = "@id/treti_vutreshen"
 	           android:layout_marginTop = "15dp"
@@ -178,52 +189,97 @@
 		       />
 	  </RelativeLayout> 
 	
-		
-</RelativeLayout>
-	
 <TextView 
-		 android:id = "@+id/messages"
-		 android:layout_below = "@id/chetvurti_vutreshen"
-		 android:paddingTop="20dp"
-		 android:layout_width = "wrap_content"
-         android:layout_height = "wrap_content"
-    	 android:textSize="17sp"
-    	 android:text = "kude si ?"
+			android:id = "@+id/red_helper"
+			android:layout_width = "10dp"
+         	android:layout_height = "10dp"
+         	android:paddingTop="150dp"
+         	android:paddingLeft="150dp"
+         	android:gravity="center"
+         	android:textSize="17sp"
+          	android:background="@drawable/redchip" />
+<TextView 
+			android:id = "@+id/blue_helper"
+			android:layout_width = "10dp"
+         	android:layout_height = "10dp"
+         	android:paddingTop="150dp"
+         	android:paddingLeft="150dp"
+         	android:textSize="17sp"
+         	android:gravity="center"
+          	android:background="@drawable/bluechip" />	
+          			
+</RelativeLayout>
+	 <!-- log messages  -->
+
+<TextView 
+	 android:id = "@+id/messages"
+	 android:gravity="center"
+	 android:paddingTop="20dp"
+	 android:layout_width = "wrap_content"
+     android:layout_height = "wrap_content"
+   	 android:textSize="17sp"
+ 
     	        
 	/>
-	<TextView 
-	    android:layout_marginTop="10dp"
-		 android:id = "@+id/textview_current_player"
-		 android:layout_width = "wrap_content"
-         android:layout_height = "wrap_content"
-         android:textSize="17sp"
-          android:text = "kude si ?"
-         
-	/>
+
+	<Button
+		android:id="@+id/resign_button"
+    	android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+    	android:layout_gravity = "center_horizontal"
+    	android:text="@string/resing_button_text"/>
+	 
+	
+	 
 	<LinearLayout 
 	    android:layout_marginTop="30dp"
 	    android:layout_width = "match_parent"
      	android:layout_height = "match_parent"
-     	android:orientation = "horizontal"
+     	android:orientation = "vertical"
+     	android:animateLayoutChanges="true"
+     	android:gravity="center_horizontal"
+     	android:layout_gravity = "center_horizontal"
 	    >
+	   <!-- redchip name vs name bluechip  -->
+	   <LinearLayout 
+	        android:layout_width = "wrap_content"
+     		android:layout_height = "wrap_content"
+     		android:orientation = "horizontal"
+     		android:animateLayoutChanges="true">
+	       
+	  
 	    <TextView 
-		 android:id = "@+id/textview_avalable_white"
-		 android:layout_width = "wrap_content"
-         android:layout_height = "wrap_content"
-         android:textSize="17sp"
-     	 android:text = "kude si ?"
-	/>
+			android:id = "@+id/redchip_textview"
+			android:layout_width = "wrap_content"
+         	android:layout_height = "wrap_content"
+         	android:textSize="17sp"
+          	android:background="@drawable/redchip" />
+	    
 	    <TextView 
-		 android:id = "@+id/textview_avalible_red"
-		 android:layout_width = "wrap_content"
-         android:layout_height = "wrap_content"
-    	 android:textSize="17sp"
-         android:text = "kude si ?"
-	/>
+	    	 android:layout_marginTop="10dp"
+			 android:id = "@+id/players_textview"
+			 android:layout_width = "wrap_content"
+        	 android:layout_height = "wrap_content"
+        	 android:textSize="17sp"
+        	 android:text = "@string/first_player_name"  />
+	    
+	    <TextView 
+			 android:id = "@+id/bluechip_textview"
+			 android:layout_width = "wrap_content"
+        	 android:layout_height = "wrap_content"
+    		 android:textSize="17sp"
+        	 android:background="@drawable/bluechip"	/>
+	     </LinearLayout>
+	     <com.game.animation.CustomViewWinner
+	     android:id="@+id/animation_win_view"
+	     android:layout_width="match_parent"
+	     android:layout_height="wrap_content"
+	      />
 	    
 	    
+	
 	</LinearLayout>
 	
 
-	    
+	 
 </LinearLayout>
