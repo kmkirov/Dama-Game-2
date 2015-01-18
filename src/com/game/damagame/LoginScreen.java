@@ -58,24 +58,24 @@ public class LoginScreen extends Activity implements OnClickListener {
 		ContentValues values = new ContentValues();
 		ContentValues values2 = new ContentValues();
 		
-		if(PlayerDatabaseHelper.player_names(this, _first_player.getText().toString()).getmId() == -1)
+		if(PlayerDatabaseHelper.player_names(this, _first_player.getText().toString()) == null)
 		{
 			SQLiteDatabase db = _db.getWritableDatabase();		
 			values.put(PlayerEntry.PLAYER_NAME, _first_player.getText().toString());
 			values.put(PlayerEntry.PLAYER_WINS, 0);
 			values.put(PlayerEntry.PLAYER_LOSES,0);
 			db.insert(PlayerEntry.TABLE_NAME, null, values);
-			db.close();
+			
 			
 		}		
-		if(PlayerDatabaseHelper.player_names(this,_second_player.getText().toString()).getmId() == -1)
+		if(PlayerDatabaseHelper.player_names(this,_second_player.getText().toString()) == null)
 		{
 			SQLiteDatabase db = _db.getWritableDatabase();	
 			values2.put(PlayerEntry.PLAYER_NAME, _second_player.getText().toString());
 			values2.put(PlayerEntry.PLAYER_WINS, 0);
 			values2.put(PlayerEntry.PLAYER_LOSES,0);
 			db.insert(PlayerEntry.TABLE_NAME, null, values2);
-			db.close();
+			
 		}
 		
     }

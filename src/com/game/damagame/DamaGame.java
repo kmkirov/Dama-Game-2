@@ -66,8 +66,8 @@ public class DamaGame extends Activity implements OnClickListener
 	//private final String mesg_intent = "Player Names";
 	
 	
-	private int counter_red = 4, //9,
-				counter_blue =4,// 9,
+	private int counter_red = 9, //9,
+				counter_blue =9,// 9,
 				need_delete = 0, //if player have 3 in a row :)
 				firstplayer_turn = 1,//1 true redchip , 2 second player turn bluechip
 				countPlayingRed = 0, /// all playing -- when given
