@@ -19,17 +19,17 @@
    <style name="row_style">
         	
            
-           <item name="android:alpha">0.3</item>
+           <item name="android:alpha">1</item>
            <item name="android:layout_width">@dimen/linearlayout_row_width</item>
            <item name="android:layout_height">@dimen/linearlayout_row_height</item>
-           <item name="android:background">@color/container_color</item> 
+           <!-- <item name="android:background">@color/container_color</item> -->
   
     </style>
     
     <style name="element">
         <item name="android:layout_width">@dimen/place_width</item>
         <item name="android:layout_height">@dimen/place_height</item>
-         <item name="android:background">@color/cell_color</item> 
+        <!-- <item name="android:background">@color/cell_color</item> -->
     </style>
  		
     
