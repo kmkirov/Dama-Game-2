@@ -146,6 +146,18 @@ public class DamaGame extends Activity implements OnClickListener
 		  	gameMessages.setText("Game started");
 	    }
 //raboteshti funkcii
+	
+	boolean hasPossibilityToGetAnyChip()
+	{
+		int other_player = firstplayer_turn == 1? 2 : 1; 
+		for(int i = 0;i<3;++i)
+			for(int j = 0 ;j<8;++j)
+				if(!checkThree(i, j,other_player))
+						return true;
+				
+		return false;				
+	}
+	
 	void putHelperOnSuccess(int index, int position, int player_on_turn)
 	{
 		
@@ -239,12 +251,18 @@ public class DamaGame extends Activity implements OnClickListener
 		int second_player_number = firstplayer_turn == 1? 2:1;
 		if(matrix[index][position] == 0)//still needs to delete
 			return false;
-
-		if( matrix[index][position] == second_player_number && 
+		
+		if(!hasPossibilityToGetAnyChip())
+		{
+			firstplayer_turn = firstplayer_turn == 1? 2:1;
+			sendMessageGame("cant find possible delete");
+		}
+		
+		if(matrix[index][position] == second_player_number && 
 				checkThree(index,position,second_player_number))
 			return false;
 		
-		if(  matrix[index][position] == second_player_number )
+		if(matrix[index][position] == second_player_number )
 		{
 			deleteHelper(index, position, player_who_deletes_color);
 			return true;
