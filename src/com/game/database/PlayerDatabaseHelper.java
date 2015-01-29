@@ -59,7 +59,7 @@ public class PlayerDatabaseHelper extends SQLiteOpenHelper
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) 
 	{
 		db.execSQL(SQL_DELETE_ENTRIES);
-		// TODO Auto-generated method stub
+		
 		db.execSQL(SQL_CREATE_ENTRIES);
 	}
 	
@@ -138,78 +138,4 @@ public class PlayerDatabaseHelper extends SQLiteOpenHelper
 	   }
 
 }
-//static public int getWinsOfPlayer(Context context, String name)
-//{
-// return  search_info_from_db(context, name, GameConstants.WINS_TYPE);
-//}
-//static  public int getLoosesOfPlayer(Context context, String name)
-//{
-//  return  search_info_from_db(context, name, GameConstants.LOOSES_TYPE);
-//}
-//  
-  
-  
-//static public int search_info_from_db( Context context, String name ,int type_of_info)
-//{
-//  SQLiteDatabase db;
-//  if(sInstance != null)
-//	    db  = sInstance.getReadableDatabase();
-//  else 
-//	   db = PlayerDatabaseHelper.getInstance(context).getReadableDatabase();
-//  	
-//  	Cursor c = db.query(
-//				PlayerEntry.TABLE_NAME,  // The table to query
-//			    projection,                               // The columns to return
-//			    null,                                // The columns for the WHERE clause
-//			    null,                            // The values for the WHERE clause
-//			    null,                                     // don't group the rows
-//			    null,                                     // don't filter by row groups
-//			    null                                 // The sort order
-//			    );
-//  	db.close();
-//	c.moveToFirst();
-//	int info=0;
-//	while(!c.isAfterLast())
-//	{
-//		String tmp_name = c.getString(c.getColumnIndexOrThrow(PlayerEntry.PLAYER_NAME));
-//		if(type_of_info == GameConstants.LOOSES_TYPE)
-//			info = Integer.parseInt(c.getString(c.getColumnIndexOrThrow(PlayerEntry.PLAYER_LOSES)));
-//		if(type_of_info == GameConstants.WINS_TYPE)
-//			info = Integer.parseInt(c.getString(c.getColumnIndexOrThrow(PlayerEntry.PLAYER_WINS)));
-//		if(type_of_info == GameConstants.ID_TYPE)
-//			info = c.getInt(c.getColumnIndexOrThrow(PlayerEntry.PLAYER_ID));
-//		if(name.equals(tmp_name))
-//		{
-//			c.close();
-//			
-//			return info;
-//		}
-//		c.moveToNext();
-//	}
-//	
-//	c.close();
-//  return -1;
-//}
-  
-// static public void changePlayerInfo( Context context, String name, int type_of_change)
-//  {
-//   	
-//   	ContentValues cv = new ContentValues();
-//   	if(type_of_change == GameConstants.WINS_TYPE)
-//   	{
-//   		int value = getWinsOfPlayer(context, name) + 1;
-//   		cv.put(PlayerEntry.PLAYER_WINS, value);
-//   	}
-//   	else
-//   	{
-//   		int value = getLoosesOfPlayer(context, name) + 1;
-//   		cv.put(PlayerEntry.PLAYER_LOSES, value);
-//   	}
-//   	SQLiteDatabase db;
-//   	 if(sInstance != null)
-//			    db  = sInstance.getReadableDatabase();
-//		   else 
-//			   db = PlayerDatabaseHelper.getInstance(context).getReadableDatabase();
-//   	db.update(PlayerEntry.TABLE_NAME, cv, PlayerEntry.PLAYER_ID + " = " + getIdByPlayername(context, name) , null);
-//   
-//  }
+

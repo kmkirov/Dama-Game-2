@@ -2,11 +2,13 @@ package com.game.damagame;
 
 import java.util.ArrayList;
 import com.game.animation.Animations;
+import com.game.animation.CustomViewWinner;
 import com.game.constants.GameConstants;
 import com.game.database.PlayerDatabaseHelper;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -14,7 +16,6 @@ import android.widget.TextView;
 
 public class DamaGame extends Activity implements OnClickListener
 {
-	//view for better game
 	private TextView    gameMessages,
 						anticrash_redchip,
 						anticrash_blue_chip,
@@ -23,18 +24,19 @@ public class DamaGame extends Activity implements OnClickListener
 	private String first_player_name,
 				   second_player_name;
 	private Button resing_button;
+	private boolean resing = false;
 	
 	
 	//game variables
-	private int first_part_game = 1;//1 first part, 0 second part
-	private int counter_red = 4, //9, number of chips to be put on board
-				counter_blue = 4,// 9,
-				need_delete = 0, //if player have 3 in a row :) needs to delete and it is 1
-				firstplayer_turn = 1,//1 true redchip , 2 second player turn bluechip
-				countPlayingRed = 0, /// all playing chips -- when given
+	private int first_part_game = 1;		//1 first part, 0 second part
+	private int counter_red = 4, 			//9, number of chips to be put on board
+				counter_blue = 4,			// 9,
+				need_delete = 0, 			//if player have 3 in a row :) needs to delete and it is 1
+				firstplayer_turn = 1,		//1 true redchip , 2 second player turn bluechip
+				countPlayingRed = 0, 		/// all playing chips -- when given
 				countPlayingBlue = 0;
 	
-	// player 1 -> 1 in matrix, player 2 ->2 in matrix
+											// player 1 -> 1 in matrix, player 2 ->2 in matrix
 	private int [][] matrix = {//1 2 3 4 5 6 7 8 position
 								{0,0,0,0,0,0,0,0},//a index
 								{0,0,0,0,0,0,0,0},//b
@@ -45,8 +47,7 @@ public class DamaGame extends Activity implements OnClickListener
 	ArrayList<Coords> selected_place_available_places = null;
 	int store_selected_color = 0;
 	private CustomDamaView dama_board;
-	
-	
+	private CustomViewWinner win_view;
 	//resources
 	int redchip = R.drawable.redchip;
 	int bluechip = R.drawable.bluechip;
@@ -58,23 +59,50 @@ public class DamaGame extends Activity implements OnClickListener
 	{
 		PlayerDatabaseHelper.addPlayerInfoOnWin(this, winner,  "16",GameConstants.WINS_TYPE);
 		PlayerDatabaseHelper.addPlayerInfoOnWin(this, looser,  "16",GameConstants.LOOSES_TYPE);
-		Animations.animatedImage.updateState(winner);
+		win_view = (CustomViewWinner) findViewById(R.id.animation_win_view);
+		win_view.updateState(winner);
+		Animations.win_animation(win_view);
+		gameMessages.setText(  "Winner is " + winner);
+		
+		new CountDownTimer(3000, 1000) {
+	         public void onFinish() {
+	             finish();
+	     
+	     }
+
+	     public void onTick(long millisUntilFinished) {
+	
+	     }
+	   }.start();
+		
 	}
 	 
 	
 	private boolean end_game()
 	{
+		if(resing && firstplayer_turn == 1)
+		{
+			write_changes_to_db(second_player_name, first_player_name);
+			return true;
+		}
+		else if(resing && firstplayer_turn == 2)
+		{
+			write_changes_to_db(first_player_name, second_player_name);
+			return true;
+		}
+	
 		if(firstplayer_turn == 1 && countPlayingRed < 3 && first_part_game != 1 || !playerHasPosibleMove())/// first loose
 		{
 			write_changes_to_db(second_player_name, first_player_name);
 			return true;
 		}
 
-		if(firstplayer_turn == 2 && countPlayingBlue < 3 && first_part_game != 1 || !playerHasPosibleMove())///second loose
+		else if(firstplayer_turn == 2 && countPlayingBlue < 3 && first_part_game != 1 || !playerHasPosibleMove())///second loose
 		{
 			write_changes_to_db(first_player_name, second_player_name);
 			return true;
 		}
+		
 		return false;
 	}
 	
@@ -99,6 +127,7 @@ public class DamaGame extends Activity implements OnClickListener
 
 	      	resing_button = (Button) findViewById(R.id.resign_button);
 	      	resing_button.setOnClickListener(this);
+	      	
 	      	anticrash_redchip = (TextView) findViewById(R.id.redchip_textview);
 	      	anticrash_blue_chip = (TextView) findViewById(R.id.bluechip_textview);
 	      	anticrash_text_players = (TextView) findViewById(R.id.players_textview);
@@ -126,6 +155,7 @@ public class DamaGame extends Activity implements OnClickListener
 			 dama_board.setBackgroundWithImage(index, position, redchip);//set texview
 			 counter_red--;
 			 countPlayingRed++;
+			//Animations.replace( anticrash_blue_chip, anticrash_redchip);
 		 }
 		 else
 		 {
@@ -248,7 +278,7 @@ public class DamaGame extends Activity implements OnClickListener
 		}
 	}
 //end of first part game
-//neraboteshti funkcii
+
 	void clear_board()
 	{
 		drawAvalable(selected_place_available_places, 0);
@@ -272,6 +302,8 @@ public class DamaGame extends Activity implements OnClickListener
 		
 		return canMoveToSelected;
 	}
+	
+	
 	void secondPartOfTheGame(Coords selected)//given the selected space
 	{	
 		if(selected.index == -1)return;
@@ -333,6 +365,7 @@ public class DamaGame extends Activity implements OnClickListener
 			}
 			}
 		}
+	
 	
 	void drawAvalable(ArrayList<Coords> available_pair, int avalable)
 	{
@@ -427,26 +460,26 @@ public class DamaGame extends Activity implements OnClickListener
 	}
 
 
-void sendMessageGame(String mesg)
-{
-	if(firstplayer_turn == 1)
+	void sendMessageGame(String mesg)
 	{
-		gameMessages.setText(  first_player_name + " " + mesg);
-	}
-	else
-	{
-		gameMessages.setText(  second_player_name + " " + mesg);
-	}
-	if(first_part_game == 1)
-	{
-		anticrash_redchip.setText("hand:" + counter_red);
-		anticrash_blue_chip.setText("hand:" + counter_blue);
-	}
-	else
-	{
-		anticrash_redchip.setText("playing:" + countPlayingRed);
-		anticrash_blue_chip.setText("playing:" + countPlayingBlue);
-	}
+		if(firstplayer_turn == 1)
+		{
+			gameMessages.setText(  first_player_name + " " + mesg);
+		}
+		else
+		{
+			gameMessages.setText(  second_player_name + " " + mesg);
+		}
+		if(first_part_game == 1)
+		{
+			anticrash_redchip.setText("hand:" + counter_red);
+			anticrash_blue_chip.setText("hand:" + counter_blue);
+		}
+		else
+		{
+			anticrash_redchip.setText("playing:" + countPlayingRed);
+			anticrash_blue_chip.setText("playing:" + countPlayingBlue);
+		}
 	
 }
 	
@@ -457,6 +490,7 @@ public void onClick(View v)
 		//dama_board.onClick(v);
 		if(v.getId() == resing_button.getId())
 		{
+			resing = true;
 			if(firstplayer_turn == 1)
 				counter_red = 0;
 			else
@@ -481,40 +515,7 @@ public void onClick(View v)
 		}
 		
 }
-////	Pair selected = position_selected(v);
-//if(v.getId() == anticrash_redchip.getId() || v.getId() == anticrash_blue_chip.getId() 
-//		|| v.getId() == anticrash_text_players.getId() )
-//	return;
-//
-//if(v.getId() == resing_button.getId())
-//{
-//	 //wining animation + database update + end of game
-//	if(firstplayer_turn == 1)
-//		write_changes_to_db(second_player_name,first_player_name);
-//	else 
-//		write_changes_to_db(first_player_name, second_player_name);
-//	Animations.win_animation();
-//	return;
-//}
 
-//if(v.getId() == animatedImage.getId())
-//{
-//	//this.finishActivity(1);
-//	finish();
-//}
-//game 
-//	if(first_part_game == 1)
-//	{
-//		firstPartOfTheGame(v, selected);
-//		replace(v);
-//		return;
-//	}
-//	else
-//	{
-//		secondPartOfTheGame(v, selected);
-	//replace(v);
-//	}
-//}
 }
 
 

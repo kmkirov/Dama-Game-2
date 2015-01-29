@@ -42,7 +42,8 @@ public class CustomDamaView extends LinearLayout implements OnClickListener
 		private TextView _c7;
 		private TextView _c8;
 		//end board
-		
+		//public static TextView _lastClickedView;
+		//public static TextView _testClickedView;
 		Coords _lastTextviewClicked;
 		public OnClickListener listener;
 	
@@ -53,7 +54,7 @@ public class CustomDamaView extends LinearLayout implements OnClickListener
 		LayoutInflater.from(context).inflate(R.layout.only_dama_board, this, true);
 		
 		_lastTextviewClicked = new Coords();
-
+		
 		_a1 = (TextView) findViewById(R.id.a1);
         _a2 = (TextView) findViewById(R.id.a2);
         _a3 = (TextView) findViewById(R.id.a3);
@@ -62,7 +63,8 @@ public class CustomDamaView extends LinearLayout implements OnClickListener
         _a6 = (TextView) findViewById(R.id.a6);
         _a7 = (TextView) findViewById(R.id.a7);
         _a8 = (TextView) findViewById(R.id.a8);
-
+        //_testClickedView=_c1;
+       // _lastClickedView = _a1;//anti null;
         _a1.setOnClickListener(this);
         _a2.setOnClickListener(this);
         _a3.setOnClickListener(this);
@@ -106,6 +108,7 @@ public class CustomDamaView extends LinearLayout implements OnClickListener
         _c6.setOnClickListener(this);
         _c7.setOnClickListener(this);
         _c8.setOnClickListener(this);
+        //_testClickedView=_c1;
 	}
 
 	
@@ -141,6 +144,7 @@ public class CustomDamaView extends LinearLayout implements OnClickListener
 	public void onClick(View v) 
 	{
 		select_textview(v);
+		//_lastClickedView = (TextView)v;
 		listener.onClick(v);
 	}
 	

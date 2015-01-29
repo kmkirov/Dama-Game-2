@@ -7,9 +7,11 @@
   
 <ImageView
     android:id="@+id/winimage"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:src="@drawable/play"/>
+    android:layout_width="25dp"
+    android:layout_height="25dp"
+    android:src="@drawable/winner"
+    android:contentDescription="@string/WinnerImage"/>
+
 
 <TextView
     android:id="@+id/wintext"

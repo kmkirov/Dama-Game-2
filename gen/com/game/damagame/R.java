@@ -1654,6 +1654,7 @@ containing a value of this type.
         public static final int redchip=0x7f02003a;
         public static final int register=0x7f02003b;
         public static final int save=0x7f02003c;
+        public static final int winner=0x7f02003d;
     }
     public static final class id {
         public static final int a1=0x7f090051;
@@ -1836,6 +1837,7 @@ containing a value of this type.
         public static final int Player_one=0x7f0a0018;
         public static final int Player_two=0x7f0a0019;
         public static final int SecondPlayer=0x7f0a0012;
+        public static final int WinnerImage=0x7f0a001d;
         /**  Content description for the action bar "home" affordance. [CHAR LIMIT=NONE] 
          */
         public static final int abc_action_bar_home_description=0x7f0a0001;

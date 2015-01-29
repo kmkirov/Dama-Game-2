@@ -25,7 +25,8 @@
         android:paddingLeft="15dp"
         android:gravity="center"
         android:textSize="17sp"
-        android:background="@drawable/redchip" />
+        android:background="@drawable/redchip"
+        android:visibility="invisible" />
 	<TextView 
 		android:id = "@+id/blue_helper"
 		android:layout_width = "10dp"
@@ -34,7 +35,8 @@
         android:paddingLeft="15dp"
         android:textSize="17sp"
         android:gravity="center"
-        android:background="@drawable/bluechip" />	
+        android:background="@drawable/bluechip"
+        android:visibility="invisible" />	
           			
 
 	 <!-- log messages  -->
@@ -99,10 +101,12 @@
     		 android:textColor="@color/background_floating_material_dark"
         	 android:background="@drawable/bluechip"	/>
 	     </LinearLayout>
+	     
 	     <com.game.animation.CustomViewWinner
 	     android:id="@+id/animation_win_view"
 	     android:layout_width="match_parent"
 	     android:layout_height="wrap_content"
+	     android:visibility="invisible"
 	      />
 	    
 	    
