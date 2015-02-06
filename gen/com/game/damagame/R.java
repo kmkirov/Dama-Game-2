@@ -1651,10 +1651,11 @@ containing a value of this type.
         public static final int free=0x7f020037;
         public static final int ic_launcher=0x7f020038;
         public static final int play=0x7f020039;
-        public static final int redchip=0x7f02003a;
-        public static final int register=0x7f02003b;
-        public static final int save=0x7f02003c;
-        public static final int winner=0x7f02003d;
+        public static final int play_bg=0x7f02003a;
+        public static final int redchip=0x7f02003b;
+        public static final int register=0x7f02003c;
+        public static final int save=0x7f02003d;
+        public static final int winner=0x7f02003e;
     }
     public static final class id {
         public static final int a1=0x7f090051;

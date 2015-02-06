@@ -7,6 +7,7 @@ import com.game.constants.GameConstants;
 import com.game.database.PlayerDatabaseHelper;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
@@ -33,8 +34,8 @@ public class DamaGame extends Activity implements OnClickListener
 	
 	//game variables
 	private int first_part_game = 1;		//1 first part, 0 second part
-	private int counter_red = 5, 			//9, number of chips to be put on board
-				counter_blue = 5,			// 9,
+	private int counter_red = 9, 			//9, number of chips to be put on board
+				counter_blue = 9,			// 9,
 				need_delete = 0, 			//if player have 3 in a row :) needs to delete and it is 1
 				firstplayer_turn = 1,		//1 true redchip , 2 second player turn bluechip
 				countPlayingRed = 0, 		/// all playing chips -- when given
@@ -80,22 +81,30 @@ public class DamaGame extends Activity implements OnClickListener
 		
 	}
 	 
+	
 	void check_draw()
 	{
 		
 		int count_moves = moves_made.size();
+		if(count_moves < 8)
+			return;
 		if(count_moves > 200)
 		{
 			moves_made.clear();
 			//risk for AI maybe move last four in the array
 			return;
 		}
-		if(	moves_made.get(count_moves-4).equal_coords(moves_made.get(count_moves-2)) &&
-			moves_made.get(count_moves-3).equal_coords(moves_made.get(count_moves-1)))
+		if(	moves_made.get(count_moves-8).equal_coords(moves_made.get(count_moves-4)) &&
+			moves_made.get(count_moves-7).equal_coords(moves_made.get(count_moves-3)) &&
+			moves_made.get(count_moves-6).equal_coords(moves_made.get(count_moves-2)) &&
+			moves_made.get(count_moves-5).equal_coords(moves_made.get(count_moves-1)) 
+			)
 			resing = true; //decide that will punch the first person ho dare to want draw
 				
 		
 	}
+	
+
 	private boolean end_game()
 	{
 		if(resing && firstplayer_turn == FIRST_PLAYER)
@@ -135,6 +144,7 @@ public class DamaGame extends Activity implements OnClickListener
 		return false;				
 	}
 
+	
 	protected void onCreate(Bundle savedInstanceState) 
 	{
 	        super.onCreate(savedInstanceState);
@@ -151,6 +161,11 @@ public class DamaGame extends Activity implements OnClickListener
 	      	anticrash_blue_chip = (TextView) findViewById(R.id.bluechip_textview);
 	      	anticrash_text_players = (TextView) findViewById(R.id.players_textview);
 	      	
+	      	anticrash_redchip.setTextColor(Color.GREEN);
+	      	anticrash_blue_chip.setTextColor(Color.GREEN);
+	      	anticrash_text_players.setTextColor(Color.BLACK);
+	      	anticrash_text_players.setBackgroundColor(Color.WHITE);
+	      	
 	      	Intent info = getIntent();
 	      	first_player_name = info.getStringExtra(GameConstants.FIRST_PLAYER_NAME);
 	      	second_player_name = info.getStringExtra(GameConstants.SECOND_PLAYER_NAME);
@@ -163,6 +178,7 @@ public class DamaGame extends Activity implements OnClickListener
 		  	
 		  	gameMessages = (TextView) findViewById(R.id.messages);
 		  	gameMessages.setText("Game started");
+		  	gameMessages.setBackgroundColor(Color.WHITE);
 	    }
 
 	
@@ -180,6 +196,7 @@ public class DamaGame extends Activity implements OnClickListener
 						return true;
 		return false;				
 	}
+	
 	
 	void putHelperOnSuccess(int index, int position, int player_on_turn)
 	{
@@ -319,7 +336,7 @@ public class DamaGame extends Activity implements OnClickListener
 			}
 		}
 	}
-//end of first part game
+
 
 	void clear_board()
 	{
@@ -328,6 +345,7 @@ public class DamaGame extends Activity implements OnClickListener
 		selected_place_available_places = null;
 		selected_place = null;
 	}
+	
 	
 	boolean jump_available(Coords selected)
 	{
@@ -384,6 +402,7 @@ public class DamaGame extends Activity implements OnClickListener
 					sendMessageGame("moving  success on position " + selected.index + " " + selected.position);
 					matrix[selected.index][selected.position] = firstplayer_turn;
 					matrix[selected_place.index][selected_place.position] = 0;
+					moves_made.add(selected);
 					clear_board();	
 					dama_board.setBackgroundWithImage(selected, current_player_color);
 					
@@ -522,9 +541,10 @@ public class DamaGame extends Activity implements OnClickListener
 		}
 	
 }
+
 	
 @Override
-public void onClick(View v) 
+	public void onClick(View v) 
 {
 		sendMessageGame("turn");
 		

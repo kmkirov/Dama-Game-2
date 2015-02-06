@@ -7,7 +7,7 @@
      android:layout_height = "match_parent"
      android:animateLayoutChanges="true"
      android:orientation = "vertical"
-     
+     android:background="@drawable/play_bg"
       > 
 	<com.game.damagame.CustomDamaView
 	    android:id="@+id/dama_board"
@@ -43,9 +43,9 @@
 	<TextView 
 		android:id = "@+id/messages"
 		android:layout_gravity="center"
-	 	android:paddingTop="20dp"
+		android:textColor="@color/background_floating_material_dark"
 	    android:layout_width = "wrap_content"
-    	android:layout_height = "@dimen/info_textviews_size"
+    	android:layout_height = "wrap_content"
    		android:textSize="17sp"/>
 
 	<Button
@@ -80,15 +80,17 @@
 			android:layout_width = "@dimen/info_textviews_size"
          	android:layout_height = "@dimen/info_textviews_size"
          	android:textSize="17sp"
+         	android:textAlignment="center"
          	android:textColor="@color/background_floating_material_dark"
           	android:background="@drawable/redchip" />
 	    
 	     <TextView 
+	         android:id = "@+id/players_textview"
 	    	 android:layout_marginTop="10dp"
-			 android:id = "@+id/players_textview"
 			 android:layout_width = "wrap_content"
-        	 android:layout_height = "@dimen/info_textviews_size"
+        	 android:layout_height = "wrap_content"
         	 android:textSize="17sp"
+        	 android:textAlignment="center"
         	 android:textColor="@color/background_floating_material_dark"
         	 android:text = "@string/first_player_name"  />
 	    
@@ -97,22 +99,19 @@
 			 android:layout_width = "@dimen/info_textviews_size"
         	 android:layout_height = "@dimen/info_textviews_size"
     		 android:textSize="17sp"
+    		 android:textAlignment="center"
     		 android:textColor="@color/background_floating_material_dark"
         	 android:background="@drawable/bluechip"	/>
 	     </LinearLayout>
 	     
-	     <com.game.animation.CustomViewWinner
+	
+	  <com.game.animation.CustomViewWinner
 	     android:id="@+id/animation_win_view"
 	     android:layout_width="match_parent"
 	     android:layout_height="wrap_content"
 	     android:layout_gravity="center"
-	     android:visibility="invisible"
-	      />
+	     android:visibility="invisible"/>
 	    
-	    
-	
 	</LinearLayout>
-	
-
 	 
 </LinearLayout>

@@ -352,10 +352,11 @@ int drawable dama 0x7f020036
 int drawable free 0x7f020037
 int drawable ic_launcher 0x7f020038
 int drawable play 0x7f020039
-int drawable redchip 0x7f02003a
-int drawable register 0x7f02003b
-int drawable save 0x7f02003c
-int drawable winner 0x7f02003d
+int drawable play_bg 0x7f02003a
+int drawable redchip 0x7f02003b
+int drawable register 0x7f02003c
+int drawable save 0x7f02003d
+int drawable winner 0x7f02003e
 int id a1 0x7f090051
 int id a2 0x7f090052
 int id a3 0x7f090053
