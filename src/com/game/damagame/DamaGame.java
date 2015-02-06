@@ -16,7 +16,10 @@ import android.widget.TextView;
 
 public class DamaGame extends Activity implements OnClickListener
 {
-	private TextView    gameMessages,
+	private int FIRST_PLAYER = 1;
+	private int SECOND_PLAYER = 2;
+	
+	private TextView 	gameMessages,
 						anticrash_redchip,
 						anticrash_blue_chip,
 						anticrash_text_players;
@@ -26,11 +29,12 @@ public class DamaGame extends Activity implements OnClickListener
 	private Button resing_button;
 	private boolean resing = false;
 	
+	private ArrayList<Coords> moves_made = new ArrayList<Coords>();
 	
 	//game variables
 	private int first_part_game = 1;		//1 first part, 0 second part
-	private int counter_red = 4, 			//9, number of chips to be put on board
-				counter_blue = 4,			// 9,
+	private int counter_red = 5, 			//9, number of chips to be put on board
+				counter_blue = 5,			// 9,
 				need_delete = 0, 			//if player have 3 in a row :) needs to delete and it is 1
 				firstplayer_turn = 1,		//1 true redchip , 2 second player turn bluechip
 				countPlayingRed = 0, 		/// all playing chips -- when given
@@ -43,7 +47,7 @@ public class DamaGame extends Activity implements OnClickListener
 								{0,0,0,0,0,0,0,0} //c
 							};
 
-	Coords selected_place = null; // ne znam zashto tuk e initialized
+	Coords selected_place = null; 
 	ArrayList<Coords> selected_place_available_places = null;
 	int store_selected_color = 0;
 	private CustomDamaView dama_board;
@@ -53,12 +57,11 @@ public class DamaGame extends Activity implements OnClickListener
 	int bluechip = R.drawable.bluechip;
 	int avalablechip = R.drawable.available;
 	int cleanChip = R.drawable.free;
-
 	 
 	void write_changes_to_db(String winner, String looser)
 	{
-		PlayerDatabaseHelper.addPlayerInfoOnWin(this, winner,  "16",GameConstants.WINS_TYPE);
-		PlayerDatabaseHelper.addPlayerInfoOnWin(this, looser,  "16",GameConstants.LOOSES_TYPE);
+		PlayerDatabaseHelper.addPlayerInfoOnWin(this, winner, "16", GameConstants.WINS_TYPE);
+		PlayerDatabaseHelper.addPlayerInfoOnWin(this, looser, "16", GameConstants.LOOSES_TYPE);
 		win_view = (CustomViewWinner) findViewById(R.id.animation_win_view);
 		win_view.updateState(winner);
 		Animations.win_animation(win_view);
@@ -77,27 +80,42 @@ public class DamaGame extends Activity implements OnClickListener
 		
 	}
 	 
-	
+	void check_draw()
+	{
+		
+		int count_moves = moves_made.size();
+		if(count_moves > 200)
+		{
+			moves_made.clear();
+			//risk for AI maybe move last four in the array
+			return;
+		}
+		if(	moves_made.get(count_moves-4).equal_coords(moves_made.get(count_moves-2)) &&
+			moves_made.get(count_moves-3).equal_coords(moves_made.get(count_moves-1)))
+			resing = true; //decide that will punch the first person ho dare to want draw
+				
+		
+	}
 	private boolean end_game()
 	{
-		if(resing && firstplayer_turn == 1)
+		if(resing && firstplayer_turn == FIRST_PLAYER)
 		{
 			write_changes_to_db(second_player_name, first_player_name);
 			return true;
 		}
-		else if(resing && firstplayer_turn == 2)
+		else if(resing && firstplayer_turn == SECOND_PLAYER)
 		{
 			write_changes_to_db(first_player_name, second_player_name);
 			return true;
 		}
-	
-		if(firstplayer_turn == 1 && countPlayingRed < 3 && first_part_game != 1 || !playerHasPosibleMove())/// first loose
+		
+		if(firstplayer_turn == FIRST_PLAYER && countPlayingRed < 3 && first_part_game != 1)/// first loose
 		{
 			write_changes_to_db(second_player_name, first_player_name);
 			return true;
 		}
 
-		else if(firstplayer_turn == 2 && countPlayingBlue < 3 && first_part_game != 1 || !playerHasPosibleMove())///second loose
+		else if(firstplayer_turn == SECOND_PLAYER && countPlayingBlue < 3 && first_part_game != 1)///second loose
 		{
 			write_changes_to_db(first_player_name, second_player_name);
 			return true;
@@ -109,9 +127,10 @@ public class DamaGame extends Activity implements OnClickListener
 	
 	boolean playerHasPosibleMove()
 	{
-		for(int i = 0; i < Coords.INDEX_2; ++i)
-			for (int j = 0; j <= Coords.MAX_POSITION; ++j)
-				if(matrix[i][j] == firstplayer_turn)
+		//if(firstplayer_turn ==FIRST_PLAYER && //)
+		for(int i = 0; i < 3; ++i)
+			for (int j = 0; j < 8; ++j)
+				if(matrix[i][j] == firstplayer_turn && get_available_moves(new Coords(i,j)).size() != 0)
 					return true;
 		return false;				
 	}
@@ -140,21 +159,25 @@ public class DamaGame extends Activity implements OnClickListener
 	      	anticrash_text_players.invalidate();
 	      		      	
 	    	first_part_game = 1;
-		  	firstplayer_turn = 1;
+		  	firstplayer_turn = FIRST_PLAYER;
 		  	
 		  	gameMessages = (TextView) findViewById(R.id.messages);
 		  	gameMessages.setText("Game started");
 	    }
-//raboteshti funkcii
+
 	
 	boolean hasPossibilityToGetAnyChip()
 	{
-		int other_player = firstplayer_turn == 1? 2 : 1; 
-		for(int i = 0;i<3;++i)
-			for(int j = 0 ;j<8;++j)
-				if(!checkThree(i, j,other_player))
+		int other_player = 0;
+		if(firstplayer_turn == FIRST_PLAYER)
+			other_player = 2;
+		else
+			other_player = 1;
+		
+		for(int i = 0;i < 3;++i)
+			for(int j = 0 ;j < 8;++j)
+				if(matrix[i][j] == other_player && !checkThree(i, j,other_player) )
 						return true;
-				
 		return false;				
 	}
 	
@@ -162,7 +185,7 @@ public class DamaGame extends Activity implements OnClickListener
 	{
 		
 		 matrix[index][position] = player_on_turn;//set matrix 
-		 if(player_on_turn == 1)
+		 if(player_on_turn == FIRST_PLAYER)
 		 {
 			 dama_board.setBackgroundWithImage(index, position, redchip);//set texview
 			 counter_red--;
@@ -176,7 +199,7 @@ public class DamaGame extends Activity implements OnClickListener
 		  	 countPlayingBlue++;
 		 }
 		  sendMessageGame("put and doesnt have 3 no need to delete");
-		  firstplayer_turn = player_on_turn == 1? 2 : 1;//second playerturn
+		  firstplayer_turn = player_on_turn == FIRST_PLAYER? SECOND_PLAYER : FIRST_PLAYER;//second playerturn
 		  if(checkThree(index, position,player_on_turn))
 		  {
 			  firstplayer_turn = player_on_turn;//change player
@@ -234,11 +257,11 @@ public class DamaGame extends Activity implements OnClickListener
 		dama_board.setBackgroundWithImage(index, position, cleanChip);
 		sendMessageGame("success delete position: "+index + ", " + position);
 		need_delete = 0;
-		if(player_who_deletes == 1)
+		if(player_who_deletes == FIRST_PLAYER)
 			countPlayingBlue--;//bug possible
 		else
 			countPlayingRed--;
-		firstplayer_turn = firstplayer_turn == 1 ? 2 : 1;
+		firstplayer_turn = firstplayer_turn == FIRST_PLAYER ? SECOND_PLAYER : FIRST_PLAYER;
 	}
 	
 
@@ -248,13 +271,14 @@ public class DamaGame extends Activity implements OnClickListener
 		int position = coord.position;
 		sendMessageGame("call deletes position");
 				
-		int second_player_number = firstplayer_turn == 1? 2:1;
+		int second_player_number = firstplayer_turn == FIRST_PLAYER ? SECOND_PLAYER : FIRST_PLAYER;
 		if(matrix[index][position] == 0)//still needs to delete
 			return false;
 		
 		if(!hasPossibilityToGetAnyChip())
 		{
-			firstplayer_turn = firstplayer_turn == 1? 2:1;
+			firstplayer_turn = firstplayer_turn == FIRST_PLAYER ? SECOND_PLAYER : FIRST_PLAYER;
+			need_delete = 0;
 			sendMessageGame("cant find possible delete");
 		}
 		
@@ -309,7 +333,7 @@ public class DamaGame extends Activity implements OnClickListener
 	{
 		boolean canMoveToSelected = false;
 		//proverqva dali sa poveche ot 3 dali ne 
-		if((countPlayingRed > 3 && firstplayer_turn == 1 )||(countPlayingBlue > 3 && firstplayer_turn == 2))
+		if((countPlayingRed > 3 && firstplayer_turn == FIRST_PLAYER )||(countPlayingBlue > 3 && firstplayer_turn == SECOND_PLAYER))
 			for(Coords c : selected_place_available_places) 
 			{
 				if(selected.equal_coords(c))
@@ -327,7 +351,7 @@ public class DamaGame extends Activity implements OnClickListener
 		if(selected.index == -1)return;
 		if (first_part_game != 1)
 		{
-			int current_player_color = firstplayer_turn == 1? redchip:bluechip;//color chip selection
+			int current_player_color = firstplayer_turn == FIRST_PLAYER ? redchip:bluechip;//color chip selection
 			
 			if(need_delete == 1)  //deleting moment
 			{
@@ -341,7 +365,6 @@ public class DamaGame extends Activity implements OnClickListener
 				//first time click and select a space
 				if( checkPossibleToSelectPullAndSave(selected) == true)
 					sendMessageGame("selected space");
-					
 				return;
 			}
 			else if(selected_place != null && selected_place.equal_coords(selected)) /// raboti
@@ -351,14 +374,13 @@ public class DamaGame extends Activity implements OnClickListener
 				dama_board.setBackgroundWithImage(selected, current_player_color);// last position was deleted on select :)
 				matrix[selected.index][selected.position] = firstplayer_turn;
 				sendMessageGame("restored space");
-				
-				
 				return;
 			}
 			else if(selected_place != null)
 			{				
 				if(jump_available(selected))/// get options to move for selected
 				{							
+					if(matrix[selected.index][selected.position] != 0) return;
 					sendMessageGame("moving  success on position " + selected.index + " " + selected.position);
 					matrix[selected.index][selected.position] = firstplayer_turn;
 					matrix[selected_place.index][selected_place.position] = 0;
@@ -370,7 +392,7 @@ public class DamaGame extends Activity implements OnClickListener
 						need_delete = 1; //ne promenqme igracha, trqbva da iztiem nqkoi :)
 					}
 					else
-						firstplayer_turn = firstplayer_turn == 1 ? 2 : 1;  //ako nqma 3ka promenqma igracha			
+						firstplayer_turn = firstplayer_turn == FIRST_PLAYER ? SECOND_PLAYER : FIRST_PLAYER;  //ako nqma 3ka promenqma igracha			
 				}
 				else//if cant move
 				{
@@ -408,7 +430,7 @@ public class DamaGame extends Activity implements OnClickListener
 		Coords tmp = null;
 		ArrayList<Coords> available_moves = new ArrayList<Coords>();
 		
-		if((countPlayingRed <= 3 && firstplayer_turn == 1 )||(countPlayingBlue <= 3 && firstplayer_turn == 2))
+		if((countPlayingRed <= 3 && firstplayer_turn == FIRST_PLAYER )||(countPlayingBlue <= 3 && firstplayer_turn == SECOND_PLAYER))
 		{
 			for(int i=0;i<3;++i)
 				for(int j = 0;j<8;++j)
@@ -480,7 +502,7 @@ public class DamaGame extends Activity implements OnClickListener
 
 	void sendMessageGame(String mesg)
 	{
-		if(firstplayer_turn == 1)
+		if(firstplayer_turn == FIRST_PLAYER)
 		{
 			gameMessages.setText(  first_player_name + " " + mesg);
 		}
@@ -505,11 +527,12 @@ public class DamaGame extends Activity implements OnClickListener
 public void onClick(View v) 
 {
 		sendMessageGame("turn");
+		
 		//dama_board.onClick(v);
 		if(v.getId() == resing_button.getId())
 		{
 			resing = true;
-			if(firstplayer_turn == 1)
+			if(firstplayer_turn == FIRST_PLAYER)
 				counter_red = 0;
 			else
 				counter_blue = 0;
@@ -525,6 +548,10 @@ public void onClick(View v)
 			}
 			else
 			{
+				if(playerHasPosibleMove() == false)//if possible to move 
+					resing = true;
+				check_draw();//bug
+				end_game();
 				secondPartOfTheGame(tmp);
 				end_game();
 			}

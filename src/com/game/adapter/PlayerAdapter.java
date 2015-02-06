@@ -8,6 +8,8 @@ import com.game.database_model.Player;
 
 
 import android.content.Context;
+import android.graphics.Color;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -62,8 +64,28 @@ public class PlayerAdapter extends BaseAdapter {
 			holder = (ViewHolder) convertView.getTag();
 		}
 		Player current = getItem(position);
+		
 		holder.player_name.setText(current.getPlayer_name());
-		holder.player_stats.setText(current.getPlayer_wins() + " " + current.getPlayer_loses());
+		holder.player_name.setTextColor(Color.GREEN);
+		holder.player_name.setGravity(Gravity.CENTER);
+		//holder.player_name.setBackgroundColor(Color.GRAY);
+		holder.player_name.setAlpha(0.7f);
+		
+		holder.player_stats.setText("wins: " + current.getPlayer_wins() + " looses: " + current.getPlayer_loses());
+		holder.player_stats.setTextColor(Color.GREEN);
+		holder.player_stats.setGravity(Gravity.CENTER);
+		//holder.player_stats.setBackgroundColor(Color.GRAY);
+		holder.player_stats.setAlpha(0.7f);
+		
+		if(position == 0)// || current.getPlayer_wins == getItem(0)  // first player
+		{
+			holder.player_name.setTextColor(Color.BLUE);
+			holder.player_name.setBackgroundColor(Color.YELLOW);
+			holder.player_name.setAlpha(0.6f);
+			holder.player_stats.setTextColor(Color.BLUE);
+			holder.player_stats.setBackgroundColor(Color.YELLOW);
+			holder.player_stats.setAlpha(0.6f);
+		}
 		
 		return convertView;
 	}

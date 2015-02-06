@@ -505,8 +505,9 @@ int menu login_screen 0x7f0c0000
 int string FirstPlayer 0x7f0a0011
 int string Player_one 0x7f0a0018
 int string Player_two 0x7f0a0019
+int string Ranking 0x7f0a001d
 int string SecondPlayer 0x7f0a0012
-int string WinnerImage 0x7f0a001d
+int string WinnerImage 0x7f0a001e
 int string abc_action_bar_home_description 0x7f0a0001
 int string abc_action_bar_home_description_format 0x7f0a0005
 int string abc_action_bar_home_subtitle_description_format 0x7f0a0006

@@ -3,7 +3,7 @@ package com.game.animation;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
-import android.widget.ImageView;
+//import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.game.damagame.R;
@@ -11,7 +11,7 @@ import com.game.damagame.R;
 
 public class CustomViewWinner extends LinearLayout
 {
-		private ImageView image;
+	//	private ImageView image;
 		private TextView text;
 
 		public CustomViewWinner(Context context, AttributeSet attrs) {
@@ -19,7 +19,7 @@ public class CustomViewWinner extends LinearLayout
 
 			LayoutInflater.from(context).inflate(R.layout.win_animation_layout, this, true);
 
-			image = (ImageView) findViewById(R.id.winimage);
+		//	image = (ImageView) findViewById(R.id.winimage);
 			text = (TextView) findViewById(R.id.wintext);
 			
 		}

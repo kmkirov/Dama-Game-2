@@ -1,7 +1,7 @@
 package com.game.damagame;
 
 import java.util.ArrayList;
-
+import java.util.Collections;
 import com.game.adapter.PlayerAdapter;
 import com.game.database.PlayerContract.PlayerEntry;
 import com.game.database.PlayerDatabaseHelper;
@@ -33,7 +33,7 @@ public class PlayerRankingList extends ListActivity
 		_db = new PlayerDatabaseHelper(this);
 		    	
 		SQLiteDatabase db  = _db.getReadableDatabase();
-		String sortOrder = PlayerEntry.PLAYER_WINS + " DESC";
+		String sortOrder = PlayerEntry.PLAYER_WINS ;//+ " DESC";
 		Cursor c = db.query(
 				PlayerEntry.TABLE_NAME,  // The table to query
 			    projection,                               // The columns to return
@@ -61,9 +61,15 @@ public class PlayerRankingList extends ListActivity
 		}
 		c.close();
 		db.close();
-		    
+		// fixing the bug with order
+		for(int i = 0 ;i<players.size()-1;++i)
+			for(int j = i+1 ;j<players.size();++j)
+				if(players.get(j).getPlayer_wins() > players.get(i).getPlayer_wins())
+					Collections.swap(players, i, j);
 		
 		_adapter = new PlayerAdapter(this, players);
 		this.setListAdapter(_adapter);
+	
+
 	}
 }
