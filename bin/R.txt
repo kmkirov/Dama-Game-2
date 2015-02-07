@@ -421,7 +421,6 @@ int id homeAsUp 0x7f09000e
 int id icon 0x7f090026
 int id ifRoom 0x7f090016
 int id image 0x7f090023
-int id increase_button 0x7f090044
 int id listMode 0x7f09000a
 int id list_item 0x7f090025
 int id messages 0x7f090048
@@ -429,6 +428,7 @@ int id middle 0x7f09001d
 int id never 0x7f090017
 int id none 0x7f09000f
 int id normal 0x7f09000b
+int id play_button 0x7f090043
 int id playername_textview 0x7f09004e
 int id players_textview 0x7f09004b
 int id progress_circular 0x7f090007
@@ -436,6 +436,7 @@ int id progress_horizontal 0x7f090008
 int id purvi_vutreshen 0x7f09005f
 int id purvo 0x7f090050
 int id radio 0x7f09002b
+int id ranking_button 0x7f090044
 int id red_helper 0x7f090046
 int id redchip_textview 0x7f09004a
 int id resign_button 0x7f090049
@@ -455,7 +456,6 @@ int id shortcut 0x7f09002a
 int id showCustom 0x7f090010
 int id showHome 0x7f090011
 int id showTitle 0x7f090012
-int id show_button 0x7f090043
 int id split_action_bar 0x7f090004
 int id stats_textview 0x7f09004f
 int id submit_area 0x7f09003c

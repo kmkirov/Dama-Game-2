@@ -72,13 +72,13 @@ public class PlayerDatabaseHelper extends SQLiteOpenHelper
 		   db = PlayerDatabaseHelper.getInstance(context).getReadableDatabase();
     	
     	Cursor c = db.query(
-				PlayerEntry.TABLE_NAME,  // The table to query
-			    projection,                               // The columns to return
-			    null,                                // The columns for the WHERE clause
-			    null,                            // The values for the WHERE clause
-			    null,                                     // don't group the rows
-			    null,                                     // don't filter by row groups
-			    null                                 // The sort order
+				PlayerEntry.TABLE_NAME,  				 // The table to query
+			    projection,                              // The columns to return
+			    null,                               	 // The columns for the WHERE clause
+			    null,                           		 // The values for the WHERE clause
+			    null,                                    // don't group the rows
+			    null,                                    // don't filter by row groups
+			    null                                 	 // The sort order
 			    );
     	
     	
@@ -88,8 +88,8 @@ public class PlayerDatabaseHelper extends SQLiteOpenHelper
 			String tmp_name = c.getString(c.getColumnIndexOrThrow(PlayerEntry.PLAYER_NAME));
 			String tmp_wins = c.getString(c.getColumnIndexOrThrow(PlayerEntry.PLAYER_WINS));
 			String tmp_looses = c.getString(c.getColumnIndexOrThrow(PlayerEntry.PLAYER_LOSES));
-			
 			int id = c.getInt(c.getColumnIndexOrThrow(PlayerEntry._ID));
+			
 			if(tyrseno_ime.equals(tmp_name))
 			{
 				c.close();
@@ -110,32 +110,32 @@ public class PlayerDatabaseHelper extends SQLiteOpenHelper
     }
 	   
 
-	   static public void addPlayerInfoOnWin(Context context, String playername, String value, int typeOfChange)//taka raboti samo
-	   {
-	    	SQLiteDatabase db;
-	    	if(sInstance != null)
-			    db  = sInstance.getReadableDatabase();
-		   else 
-			   db = PlayerDatabaseHelper.getInstance(context).getReadableDatabase();
-	    	
-	    	ContentValues cv = new ContentValues();
-	    	Player pl = player_names(context, playername);
-	    	if(typeOfChange == GameConstants.WINS_TYPE)
-	    	{
-	    		cv.put(PlayerEntry.PLAYER_WINS, pl.getPlayer_wins() + 1);
-		    	cv.put(PlayerEntry.PLAYER_LOSES, pl.getPlayer_loses());
-		    	cv.put(PlayerEntry.PLAYER_NAME, playername);
-	    	}
-	    	if(typeOfChange == GameConstants.LOOSES_TYPE)
-	    	{
-	    		cv.put(PlayerEntry.PLAYER_WINS, pl.getPlayer_wins());
-		    	cv.put(PlayerEntry.PLAYER_LOSES, pl.getPlayer_loses() + 1);
-		    	cv.put(PlayerEntry.PLAYER_NAME, playername);
-	    	}
-	    	//db.insert(PlayerEntry.TABLE_NAME, null, cv);
-	    	db.update(PlayerEntry.TABLE_NAME, cv, PlayerEntry.PLAYER_ID + " = " + Integer.toString(getIdByPlayername(context,playername)) , null);
-	    	db.close();
-	   }
+   static public void addPlayerInfoOnWin(Context context, String playername, String value, int typeOfChange)//taka raboti samo
+   {
+    	SQLiteDatabase db;
+    	if(sInstance != null)
+		    db  = sInstance.getReadableDatabase();
+	   else 
+		   db = PlayerDatabaseHelper.getInstance(context).getReadableDatabase();
+    	
+    	ContentValues cv = new ContentValues();
+    	Player pl = player_names(context, playername);
+    	if(typeOfChange == GameConstants.WINS_TYPE)
+    	{
+    		cv.put(PlayerEntry.PLAYER_WINS, pl.getPlayer_wins() + 1);
+	    	cv.put(PlayerEntry.PLAYER_LOSES, pl.getPlayer_loses());
+	    	cv.put(PlayerEntry.PLAYER_NAME, playername);
+    	}
+    	if(typeOfChange == GameConstants.LOOSES_TYPE)
+    	{
+    		cv.put(PlayerEntry.PLAYER_WINS, pl.getPlayer_wins());
+	    	cv.put(PlayerEntry.PLAYER_LOSES, pl.getPlayer_loses() + 1);
+	    	cv.put(PlayerEntry.PLAYER_NAME, playername);
+    	}
+    	//db.insert(PlayerEntry.TABLE_NAME, null, cv);
+    	db.update(PlayerEntry.TABLE_NAME, cv, PlayerEntry.PLAYER_ID + " = " + Integer.toString(getIdByPlayername(context,playername)) , null);
+    	db.close();
+   }
 
 }
 

@@ -41,8 +41,8 @@ public class LoginScreen extends Activity implements OnClickListener {
         _first_player = (EditText) findViewById(R.id.first_player_edit_text);
         _second_player = (EditText) findViewById(R.id.second_player_edittext);
      
-        _showRanking = (Button) findViewById(R.id.show_button);
-        _start_game = (Button) findViewById(R.id.increase_button);
+        _showRanking = (Button) findViewById(R.id.ranking_button);
+        _start_game = (Button) findViewById(R.id.play_button);
         _start_game.setOnClickListener(this);
         _showRanking.setOnClickListener(this);        
         _first_player.setOnClickListener(this);
@@ -112,8 +112,6 @@ public class LoginScreen extends Activity implements OnClickListener {
 
     }
    
-
-    
     
     @Override
 	public void onClick(View v) 
@@ -129,17 +127,15 @@ public class LoginScreen extends Activity implements OnClickListener {
 		}
 	
 		
-		if(v.getId() == _showRanking.getId())
+		if(v.getId() ==  _start_game.getId())
 		{
 			Intent intent = new Intent(this, DamaGame.class);
 			savePlayer();
 			intent.putExtra(GameConstants.FIRST_PLAYER_NAME, _first_player.getText().toString());
 			intent.putExtra(GameConstants.SECOND_PLAYER_NAME, _second_player.getText().toString());
-			
-			//startActivityForResult();
 			startActivity(intent);
 		}
-		if(v.getId() == _start_game.getId())
+		if(v.getId() == _showRanking.getId())
 		{
 			Intent intent = new Intent(this, PlayerRankingList.class);
 			_db.close();

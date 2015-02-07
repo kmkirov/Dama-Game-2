@@ -46,7 +46,8 @@ public class PlayerAdapter extends BaseAdapter {
 	}
 
 	@Override
-	public View getView(int position, View convertView, ViewGroup parent) {
+	public View getView(int position, View convertView, ViewGroup parent)
+	{
 		
 		ViewHolder holder;
 		if(convertView == null)
@@ -66,34 +67,48 @@ public class PlayerAdapter extends BaseAdapter {
 		Player current = getItem(position);
 		
 		holder.player_name.setText(current.getPlayer_name());
-		holder.player_name.setTextColor(Color.GREEN);
-		holder.player_name.setGravity(Gravity.CENTER);
-		holder.player_name.setBackgroundColor(Color.GRAY);
-		
-		holder.player_name.setAlpha(0.7f);
-		
 		holder.player_stats.setText("wins: " + current.getPlayer_wins() + " looses: " + current.getPlayer_loses());
-		holder.player_stats.setTextColor(Color.GREEN);
-		holder.player_stats.setGravity(Gravity.CENTER);
-		holder.player_stats.setBackgroundColor(Color.GRAY);
-		holder.player_stats.setAlpha(0.7f);
+		standard_coloring(holder);
 		
 		if(position == 0)// || current.getPlayer_wins == getItem(0)  // first player
 		{
-			holder.player_name.setTextColor(Color.BLUE);
-			holder.player_name.setBackgroundColor(Color.YELLOW);
-			holder.player_name.setAlpha(0.6f);
-			
-			holder.player_stats.setTextColor(Color.BLUE);
-			holder.player_stats.setBackgroundColor(Color.YELLOW);
-			holder.player_stats.setAlpha(0.6f);
+			winner_coloring(holder);
 		}
 		
 		return convertView;
 	}
+	
+	
+	private void standard_coloring(ViewHolder holder)
+	{
+		holder.player_name.setTextColor(Color.GREEN);
+		holder.player_name.setGravity(Gravity.CENTER);
+		holder.player_name.setBackgroundColor(0);
+		holder.player_name.setAlpha(0.7f);
+		
+		holder.player_stats.setTextColor(Color.GREEN);
+		holder.player_stats.setGravity(Gravity.CENTER);
+		holder.player_stats.setBackgroundColor(Color.GRAY);
+		holder.player_stats.setAlpha(0.7f);
+	}
+	
+	
+	private void winner_coloring(ViewHolder holder)
+	{
+		holder.player_name.setTextColor(Color.BLUE);
+		holder.player_name.setBackgroundColor(Color.YELLOW);
+		holder.player_name.setAlpha(0.6f);
+		
+		holder.player_stats.setTextColor(Color.BLUE);
+		holder.player_stats.setBackgroundColor(Color.YELLOW);
+		holder.player_stats.setAlpha(0.6f);
+	}
+	
+	
 	private class ViewHolder
 	{
 		TextView player_name;
 		TextView player_stats;//win and loose
 	}
+	
 }

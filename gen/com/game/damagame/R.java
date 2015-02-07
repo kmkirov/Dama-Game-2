@@ -1722,7 +1722,6 @@ containing a value of this type.
         public static final int icon=0x7f090026;
         public static final int ifRoom=0x7f090016;
         public static final int image=0x7f090023;
-        public static final int increase_button=0x7f090044;
         public static final int listMode=0x7f09000a;
         public static final int list_item=0x7f090025;
         public static final int messages=0x7f090048;
@@ -1730,6 +1729,7 @@ containing a value of this type.
         public static final int never=0x7f090017;
         public static final int none=0x7f09000f;
         public static final int normal=0x7f09000b;
+        public static final int play_button=0x7f090043;
         public static final int playername_textview=0x7f09004e;
         public static final int players_textview=0x7f09004b;
         public static final int progress_circular=0x7f090007;
@@ -1737,6 +1737,7 @@ containing a value of this type.
         public static final int purvi_vutreshen=0x7f09005f;
         public static final int purvo=0x7f090050;
         public static final int radio=0x7f09002b;
+        public static final int ranking_button=0x7f090044;
         public static final int red_helper=0x7f090046;
         public static final int redchip_textview=0x7f09004a;
         public static final int resign_button=0x7f090049;
@@ -1756,7 +1757,6 @@ containing a value of this type.
         public static final int showCustom=0x7f090010;
         public static final int showHome=0x7f090011;
         public static final int showTitle=0x7f090012;
-        public static final int show_button=0x7f090043;
         public static final int split_action_bar=0x7f090004;
         public static final int stats_textview=0x7f09004f;
         public static final int submit_area=0x7f09003c;

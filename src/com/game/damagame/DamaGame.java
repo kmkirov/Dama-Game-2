@@ -27,8 +27,9 @@ public class DamaGame extends Activity implements OnClickListener
 	
 	private String first_player_name,
 				   second_player_name;
+	
 	private Button resing_button;
-	private boolean resing = false;
+	private boolean resign = false;
 	
 	private ArrayList<Coords> moves_made = new ArrayList<Coords>();
 	
@@ -50,7 +51,9 @@ public class DamaGame extends Activity implements OnClickListener
 
 	Coords selected_place = null; 
 	ArrayList<Coords> selected_place_available_places = null;
-	int store_selected_color = 0;
+	
+	//int store_selected_color = 0;
+	
 	private CustomDamaView dama_board;
 	private CustomViewWinner win_view;
 	//resources
@@ -67,13 +70,12 @@ public class DamaGame extends Activity implements OnClickListener
 		win_view.updateState(winner);
 		Animations.win_animation(win_view);
 		gameMessages.setText(  "Winner is " + winner);
-		
+		//timer for win
 		new CountDownTimer(3000, 1000) {
 	         public void onFinish() {
 	             finish();
 	     
 	     }
-
 	     public void onTick(long millisUntilFinished) {
 	
 	     }
@@ -84,14 +86,12 @@ public class DamaGame extends Activity implements OnClickListener
 	
 	void check_draw()
 	{
-		
 		int count_moves = moves_made.size();
 		if(count_moves < 8)
 			return;
 		if(count_moves > 200)
 		{
-			moves_made.clear();
-			//risk for AI maybe move last four in the array
+			moves_made.clear();//risk for AI maybe move last four in the array
 			return;
 		}
 		if(	moves_made.get(count_moves-8).equal_coords(moves_made.get(count_moves-4)) &&
@@ -99,20 +99,18 @@ public class DamaGame extends Activity implements OnClickListener
 			moves_made.get(count_moves-6).equal_coords(moves_made.get(count_moves-2)) &&
 			moves_made.get(count_moves-5).equal_coords(moves_made.get(count_moves-1)) 
 			)
-			resing = true; //decide that will punch the first person ho dare to want draw
-				
-		
+			resign = true; //decided 
 	}
 	
 
 	private boolean end_game()
 	{
-		if(resing && firstplayer_turn == FIRST_PLAYER)
+		if(resign && firstplayer_turn == FIRST_PLAYER)
 		{
 			write_changes_to_db(second_player_name, first_player_name);
 			return true;
 		}
-		else if(resing && firstplayer_turn == SECOND_PLAYER)
+		else if(resign && firstplayer_turn == SECOND_PLAYER)
 		{
 			write_changes_to_db(first_player_name, second_player_name);
 			return true;
@@ -322,8 +320,6 @@ public class DamaGame extends Activity implements OnClickListener
 				deletePosition(selected,firstplayer_turn);
 				return;
 			}
-		
-		
 			if(counter_red + counter_blue > 0)
 			{
 				 putInMatrix(selected);
@@ -350,7 +346,6 @@ public class DamaGame extends Activity implements OnClickListener
 	boolean jump_available(Coords selected)
 	{
 		boolean canMoveToSelected = false;
-		//proverqva dali sa poveche ot 3 dali ne 
 		if((countPlayingRed > 3 && firstplayer_turn == FIRST_PLAYER )||(countPlayingBlue > 3 && firstplayer_turn == SECOND_PLAYER))
 			for(Coords c : selected_place_available_places) 
 			{
@@ -521,7 +516,7 @@ public class DamaGame extends Activity implements OnClickListener
 
 	void sendMessageGame(String mesg)
 	{
-		if(firstplayer_turn == FIRST_PLAYER)
+		if(firstplayer_turn == FIRST_PLAYER)//message from ?
 		{
 			gameMessages.setText(  first_player_name + " " + mesg);
 		}
@@ -529,7 +524,7 @@ public class DamaGame extends Activity implements OnClickListener
 		{
 			gameMessages.setText(  second_player_name + " " + mesg);
 		}
-		if(first_part_game == 1)
+		if(first_part_game == 1)//updating chips
 		{
 			anticrash_redchip.setText("hand:" + counter_red);
 			anticrash_blue_chip.setText("hand:" + counter_blue);
@@ -545,22 +540,22 @@ public class DamaGame extends Activity implements OnClickListener
 	
 @Override
 	public void onClick(View v) 
-{
+	{
+		if(resign == true)
+			return;// don't allow to click if game is ended so winner can't be changed.
 		sendMessageGame("turn");
-		
-		//dama_board.onClick(v);
 		if(v.getId() == resing_button.getId())
 		{
-			resing = true;
+			resign = true;
 			if(firstplayer_turn == FIRST_PLAYER)
-				counter_red = 0;
+				counter_red = 0;//trick to finish game
 			else
 				counter_blue = 0;
 			end_game();
 		}
 		Coords tmp = dama_board.getLastClick();
 		
-		if(tmp!=null && tmp.index != -1)
+		if(tmp != null && tmp.index != -1)
 		{
 			if(first_part_game == 1)
 			{
@@ -569,9 +564,9 @@ public class DamaGame extends Activity implements OnClickListener
 			else
 			{
 				if(playerHasPosibleMove() == false)//if possible to move 
-					resing = true;
-				check_draw();//bug
-				end_game();
+					resign = true;
+				check_draw();
+				end_game(); //check possibility to continue the game
 				secondPartOfTheGame(tmp);
 				end_game();
 			}
@@ -579,7 +574,7 @@ public class DamaGame extends Activity implements OnClickListener
 			return;
 		}
 		
-}
+	}
 
 }
 

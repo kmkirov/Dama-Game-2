@@ -18,10 +18,10 @@ public class Animations {
 		replaceAnimation.setFillAfter(true);
 		// create scale animation
 		ScaleAnimation scale = new ScaleAnimation(0.0f, xScale, 0.0f, yScale);
-		scale.setDuration(300);
+		scale.setDuration(700);
 		// create translation animation
 		TranslateAnimation trans = new TranslateAnimation(100, 0, 0, 0);
-		trans.setDuration(300);
+		trans.setDuration(700);
 		// add new animations to the set
 		replaceAnimation.addAnimation(scale);
 		replaceAnimation.addAnimation(trans);
