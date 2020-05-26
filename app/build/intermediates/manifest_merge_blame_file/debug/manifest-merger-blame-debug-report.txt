@@ -1,0 +1,59 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.game.damagame"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+7-->/home/kmkirov/kkProjectsGits/Dama-Game-2/app/src/main/AndroidManifest.xml:7:5-47
+8        android:minSdkVersion="17"
+8-->/home/kmkirov/kkProjectsGits/Dama-Game-2/app/src/main/AndroidManifest.xml:7:5-47
+9        android:targetSdkVersion="29" />
+9-->/home/kmkirov/kkProjectsGits/Dama-Game-2/app/src/main/AndroidManifest.xml:7:15-44
+10
+11    <application
+11-->/home/kmkirov/kkProjectsGits/Dama-Game-2/app/src/main/AndroidManifest.xml:9:5-32:19
+12        android:allowBackup="true"
+12-->/home/kmkirov/kkProjectsGits/Dama-Game-2/app/src/main/AndroidManifest.xml:10:9-35
+13        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+13-->[androidx.core:core:1.0.0] /home/kmkirov/.gradle/caches/transforms-2/files-2.1/799659d157cba173c3391744d4f4133c/core-1.0.0/AndroidManifest.xml:22:18-86
+14        android:debuggable="true"
+15        android:icon="@drawable/ic_launcher"
+15-->/home/kmkirov/kkProjectsGits/Dama-Game-2/app/src/main/AndroidManifest.xml:11:9-45
+16        android:label="@string/app_name"
+16-->/home/kmkirov/kkProjectsGits/Dama-Game-2/app/src/main/AndroidManifest.xml:12:9-41
+17        android:testOnly="true"
+18        android:theme="@style/AppTheme" >
+18-->/home/kmkirov/kkProjectsGits/Dama-Game-2/app/src/main/AndroidManifest.xml:13:9-40
+19        <activity
+19-->/home/kmkirov/kkProjectsGits/Dama-Game-2/app/src/main/AndroidManifest.xml:14:9-17:48
+20            android:name="com.game.damagame.PlayerRankingList"
+20-->/home/kmkirov/kkProjectsGits/Dama-Game-2/app/src/main/AndroidManifest.xml:16:13-46
+21            android:label="@string/app_name" />
+21-->/home/kmkirov/kkProjectsGits/Dama-Game-2/app/src/main/AndroidManifest.xml:17:13-45
+22        <activity
+22-->/home/kmkirov/kkProjectsGits/Dama-Game-2/app/src/main/AndroidManifest.xml:18:9-21:48
+23            android:name="com.game.damagame.DamaGame"
+23-->/home/kmkirov/kkProjectsGits/Dama-Game-2/app/src/main/AndroidManifest.xml:20:14-38
+24            android:label="@string/app_name" />
+24-->/home/kmkirov/kkProjectsGits/Dama-Game-2/app/src/main/AndroidManifest.xml:21:14-46
+25        <activity
+25-->/home/kmkirov/kkProjectsGits/Dama-Game-2/app/src/main/AndroidManifest.xml:22:9-31:20
+26            android:name="com.game.damagame.LoginScreen"
+26-->/home/kmkirov/kkProjectsGits/Dama-Game-2/app/src/main/AndroidManifest.xml:23:13-40
+27            android:label="@string/app_name" >
+27-->/home/kmkirov/kkProjectsGits/Dama-Game-2/app/src/main/AndroidManifest.xml:24:13-45
+28            <intent-filter>
+28-->/home/kmkirov/kkProjectsGits/Dama-Game-2/app/src/main/AndroidManifest.xml:26:13-30:29
+29                <action android:name="android.intent.action.MAIN" />
+29-->/home/kmkirov/kkProjectsGits/Dama-Game-2/app/src/main/AndroidManifest.xml:27:17-69
+29-->/home/kmkirov/kkProjectsGits/Dama-Game-2/app/src/main/AndroidManifest.xml:27:25-66
+30
+31                <category android:name="android.intent.category.LAUNCHER" />
+31-->/home/kmkirov/kkProjectsGits/Dama-Game-2/app/src/main/AndroidManifest.xml:29:17-77
+31-->/home/kmkirov/kkProjectsGits/Dama-Game-2/app/src/main/AndroidManifest.xml:29:27-74
+32            </intent-filter>
+33        </activity>
+34    </application>
+35
+36</manifest>

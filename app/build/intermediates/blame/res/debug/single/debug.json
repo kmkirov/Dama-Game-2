@@ -1,0 +1,230 @@
+[
+    {
+        "merged": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/build/intermediates/res/merged/debug/drawable-ldpi_background.jpg.flat",
+        "source": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/src/main/res/drawable-ldpi/background.jpg"
+    },
+    {
+        "merged": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/build/intermediates/res/merged/debug/drawable-ldpi_save.jpg.flat",
+        "source": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/src/main/res/drawable-ldpi/save.jpg"
+    },
+    {
+        "merged": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/build/intermediates/res/merged/debug/drawable-mdpi_register.jpg.flat",
+        "source": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/src/main/res/drawable-mdpi/register.jpg"
+    },
+    {
+        "merged": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/build/intermediates/res/merged/debug/drawable-mdpi_available.png.flat",
+        "source": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/src/main/res/drawable-mdpi/available.png"
+    },
+    {
+        "merged": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/build/intermediates/res/merged/debug/drawable-xhdpi_play_bg.jpg.flat",
+        "source": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/src/main/res/drawable-xhdpi/play_bg.jpg"
+    },
+    {
+        "merged": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/build/intermediates/res/merged/debug/drawable-ldpi_free.png.flat",
+        "source": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/src/main/res/drawable-ldpi/free.png"
+    },
+    {
+        "merged": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/build/intermediates/res/merged/debug/drawable-xhdpi_save.jpg.flat",
+        "source": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/src/main/res/drawable-xhdpi/save.jpg"
+    },
+    {
+        "merged": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/build/intermediates/res/merged/debug/drawable-xhdpi_ic_launcher.png.flat",
+        "source": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/src/main/res/drawable-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/build/intermediates/res/merged/debug/layout_activity_login_screen.xml.flat",
+        "source": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/src/main/res/layout/activity_login_screen.xml"
+    },
+    {
+        "merged": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/build/intermediates/res/merged/debug/drawable-xhdpi_dama.png.flat",
+        "source": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/src/main/res/drawable-xhdpi/dama.png"
+    },
+    {
+        "merged": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/build/intermediates/res/merged/debug/drawable-xhdpi_free.png.flat",
+        "source": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/src/main/res/drawable-xhdpi/free.png"
+    },
+    {
+        "merged": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/build/intermediates/res/merged/debug/drawable-mdpi_winner.jpg.flat",
+        "source": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/src/main/res/drawable-mdpi/winner.jpg"
+    },
+    {
+        "merged": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/build/intermediates/res/merged/debug/drawable-hdpi_winner.jpg.flat",
+        "source": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/src/main/res/drawable-hdpi/winner.jpg"
+    },
+    {
+        "merged": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/build/intermediates/res/merged/debug/drawable-ldpi_register.jpg.flat",
+        "source": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/src/main/res/drawable-ldpi/register.jpg"
+    },
+    {
+        "merged": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/build/intermediates/res/merged/debug/drawable-ldpi_dama.png.flat",
+        "source": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/src/main/res/drawable-ldpi/dama.png"
+    },
+    {
+        "merged": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/build/intermediates/res/merged/debug/drawable-xhdpi_play.png.flat",
+        "source": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/src/main/res/drawable-xhdpi/play.png"
+    },
+    {
+        "merged": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/build/intermediates/res/merged/debug/drawable-mdpi_save.jpg.flat",
+        "source": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/src/main/res/drawable-mdpi/save.jpg"
+    },
+    {
+        "merged": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/build/intermediates/res/merged/debug/drawable-ldpi_play.png.flat",
+        "source": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/src/main/res/drawable-ldpi/play.png"
+    },
+    {
+        "merged": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/build/intermediates/res/merged/debug/drawable-xhdpi_available.png.flat",
+        "source": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/src/main/res/drawable-xhdpi/available.png"
+    },
+    {
+        "merged": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/build/intermediates/res/merged/debug/menu_login_screen.xml.flat",
+        "source": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/src/main/res/menu/login_screen.xml"
+    },
+    {
+        "merged": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/build/intermediates/res/merged/debug/drawable-ldpi_redchip.png.flat",
+        "source": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/src/main/res/drawable-ldpi/redchip.png"
+    },
+    {
+        "merged": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/build/intermediates/res/merged/debug/drawable-hdpi_play_bg.jpg.flat",
+        "source": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/src/main/res/drawable-hdpi/play_bg.jpg"
+    },
+    {
+        "merged": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/build/intermediates/res/merged/debug/drawable-mdpi_redchip.png.flat",
+        "source": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/src/main/res/drawable-mdpi/redchip.png"
+    },
+    {
+        "merged": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/build/intermediates/res/merged/debug/drawable-mdpi_background.jpg.flat",
+        "source": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/src/main/res/drawable-mdpi/background.jpg"
+    },
+    {
+        "merged": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/build/intermediates/res/merged/debug/drawable-hdpi_register.jpg.flat",
+        "source": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/src/main/res/drawable-hdpi/register.jpg"
+    },
+    {
+        "merged": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/build/intermediates/res/merged/debug/drawable-mdpi_dama.png.flat",
+        "source": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/src/main/res/drawable-mdpi/dama.png"
+    },
+    {
+        "merged": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/build/intermediates/res/merged/debug/drawable-ldpi_play_bg.jpg.flat",
+        "source": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/src/main/res/drawable-ldpi/play_bg.jpg"
+    },
+    {
+        "merged": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/build/intermediates/res/merged/debug/drawable-xhdpi_winner.jpg.flat",
+        "source": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/src/main/res/drawable-xhdpi/winner.jpg"
+    },
+    {
+        "merged": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/build/intermediates/res/merged/debug/drawable-hdpi_bluechip.png.flat",
+        "source": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/src/main/res/drawable-hdpi/bluechip.png"
+    },
+    {
+        "merged": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/build/intermediates/res/merged/debug/layout_only_dama_board.xml.flat",
+        "source": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/src/main/res/layout/only_dama_board.xml"
+    },
+    {
+        "merged": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/build/intermediates/res/merged/debug/layout_list_ranking.xml.flat",
+        "source": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/src/main/res/layout/list_ranking.xml"
+    },
+    {
+        "merged": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/build/intermediates/res/merged/debug/drawable-xhdpi_redchip.png.flat",
+        "source": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/src/main/res/drawable-xhdpi/redchip.png"
+    },
+    {
+        "merged": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/build/intermediates/res/merged/debug/layout_win_animation_layout.xml.flat",
+        "source": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/src/main/res/layout/win_animation_layout.xml"
+    },
+    {
+        "merged": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/build/intermediates/res/merged/debug/drawable-hdpi_dama.png.flat",
+        "source": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/src/main/res/drawable-hdpi/dama.png"
+    },
+    {
+        "merged": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/build/intermediates/res/merged/debug/drawable-hdpi_background.jpg.flat",
+        "source": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/src/main/res/drawable-hdpi/background.jpg"
+    },
+    {
+        "merged": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/build/intermediates/res/merged/debug/drawable-xxhdpi_play_bg.jpg.flat",
+        "source": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/src/main/res/drawable-xxhdpi/play_bg.jpg"
+    },
+    {
+        "merged": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/build/intermediates/res/merged/debug/drawable-hdpi_ic_launcher.png.flat",
+        "source": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/src/main/res/drawable-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/build/intermediates/res/merged/debug/layout_dama_game.xml.flat",
+        "source": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/src/main/res/layout/dama_game.xml"
+    },
+    {
+        "merged": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/build/intermediates/res/merged/debug/drawable-hdpi_play.png.flat",
+        "source": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/src/main/res/drawable-hdpi/play.png"
+    },
+    {
+        "merged": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/build/intermediates/res/merged/debug/drawable-hdpi_redchip.png.flat",
+        "source": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/src/main/res/drawable-hdpi/redchip.png"
+    },
+    {
+        "merged": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/build/intermediates/res/merged/debug/drawable-mdpi_play_bg.jpg.flat",
+        "source": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/src/main/res/drawable-mdpi/play_bg.jpg"
+    },
+    {
+        "merged": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/build/intermediates/res/merged/debug/drawable-mdpi_bluechip.png.flat",
+        "source": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/src/main/res/drawable-mdpi/bluechip.png"
+    },
+    {
+        "merged": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/build/intermediates/res/merged/debug/drawable-hdpi_free.png.flat",
+        "source": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/src/main/res/drawable-hdpi/free.png"
+    },
+    {
+        "merged": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/build/intermediates/res/merged/debug/drawable-ldpi_available.png.flat",
+        "source": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/src/main/res/drawable-ldpi/available.png"
+    },
+    {
+        "merged": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/build/intermediates/res/merged/debug/drawable-xxhdpi_ic_launcher.png.flat",
+        "source": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/src/main/res/drawable-xxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/build/intermediates/res/merged/debug/drawable-xhdpi_background.jpg.flat",
+        "source": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/src/main/res/drawable-xhdpi/background.jpg"
+    },
+    {
+        "merged": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/build/intermediates/res/merged/debug/drawable-mdpi_free.png.flat",
+        "source": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/src/main/res/drawable-mdpi/free.png"
+    },
+    {
+        "merged": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/build/intermediates/res/merged/debug/drawable-ldpi_winner.jpg.flat",
+        "source": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/src/main/res/drawable-ldpi/winner.jpg"
+    },
+    {
+        "merged": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/build/intermediates/res/merged/debug/drawable-mdpi_ic_launcher.png.flat",
+        "source": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/src/main/res/drawable-mdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/build/intermediates/res/merged/debug/drawable-xhdpi_register.jpg.flat",
+        "source": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/src/main/res/drawable-xhdpi/register.jpg"
+    },
+    {
+        "merged": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/build/intermediates/res/merged/debug/layout_list_item_ranking.xml.flat",
+        "source": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/src/main/res/layout/list_item_ranking.xml"
+    },
+    {
+        "merged": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/build/intermediates/res/merged/debug/drawable-ldpi_bluechip.png.flat",
+        "source": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/src/main/res/drawable-ldpi/bluechip.png"
+    },
+    {
+        "merged": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/build/intermediates/res/merged/debug/drawable-mdpi_play.png.flat",
+        "source": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/src/main/res/drawable-mdpi/play.png"
+    },
+    {
+        "merged": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/build/intermediates/res/merged/debug/drawable-hdpi_available.png.flat",
+        "source": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/src/main/res/drawable-hdpi/available.png"
+    },
+    {
+        "merged": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/build/intermediates/res/merged/debug/drawable-hdpi_save.jpg.flat",
+        "source": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/src/main/res/drawable-hdpi/save.jpg"
+    },
+    {
+        "merged": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/build/intermediates/res/merged/debug/drawable-ldpi_ic_launcher.png.flat",
+        "source": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/src/main/res/drawable-ldpi/ic_launcher.png"
+    },
+    {
+        "merged": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/build/intermediates/res/merged/debug/drawable-xhdpi_bluechip.png.flat",
+        "source": "/home/kmkirov/kkProjectsGits/Dama-Game-2/app/src/main/res/drawable-xhdpi/bluechip.png"
+    }
+]

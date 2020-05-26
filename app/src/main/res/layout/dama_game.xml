@@ -1,0 +1,114 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.dama.MainActivity"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
+    android:orientation="vertical"
+    android:background="@drawable/play_bg">
+
+    <com.game.damagame.CustomDamaView
+        android:id="@+id/dama_board"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_gravity="center"
+        android:animateLayoutChanges="true" />
+
+    <TextView
+        android:id="@+id/red_helper"
+        android:layout_width="10dp"
+        android:layout_height="10dp"
+        android:paddingTop="15dp"
+        android:paddingLeft="15dp"
+        android:gravity="center"
+        android:textSize="17sp"
+        android:background="@drawable/redchip"
+        android:visibility="invisible" />
+
+    <TextView
+        android:id="@+id/blue_helper"
+        android:layout_width="10dp"
+        android:layout_height="10dp"
+        android:paddingTop="15dp"
+        android:paddingLeft="15dp"
+        android:textSize="17sp"
+        android:gravity="center"
+        android:background="@drawable/bluechip"
+        android:visibility="invisible" />
+
+
+    <!-- log messages  -->
+
+    <TextView
+        android:id="@+id/messages"
+        android:layout_gravity="center"
+        android:textColor="@color/background_floating_material_dark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="17sp" />
+
+    <Button
+        android:id="@+id/resign_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/resing_button_text" />
+
+    <LinearLayout
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:animateLayoutChanges="true"
+        android:gravity="center_horizontal"
+        android:layout_gravity="center_horizontal">
+
+
+        <!-- redchip name vs name bluechip  -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:orientation="horizontal"
+            android:animateLayoutChanges="true">
+
+
+            <TextView
+                android:id="@+id/redchip_textview"
+                android:layout_width="@dimen/info_textviews_size"
+                android:layout_height="@dimen/info_textviews_size"
+                android:textSize="17sp"
+                android:textAlignment="center"
+                android:textColor="@color/background_floating_material_dark"
+                android:background="@drawable/redchip" />
+
+            <TextView
+                android:id="@+id/players_textview"
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="17sp"
+                android:textAlignment="center"
+                android:textColor="@color/background_floating_material_dark"
+                android:text="@string/first_player_name" />
+
+            <TextView
+                android:id="@+id/bluechip_textview"
+                android:layout_width="@dimen/info_textviews_size"
+                android:layout_height="@dimen/info_textviews_size"
+                android:textSize="17sp"
+                android:textAlignment="center"
+                android:textColor="@color/background_floating_material_dark"
+                android:background="@drawable/bluechip" />
+        </LinearLayout>
+
+
+        <com.game.animation.CustomViewWinner
+            android:id="@+id/animation_win_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="invisible" />
+
+    </LinearLayout>
+
+</LinearLayout>

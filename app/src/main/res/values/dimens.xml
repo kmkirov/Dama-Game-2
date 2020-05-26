@@ -1,0 +1,20 @@
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="linearlayout_width">300dp</dimen>
+    <dimen name="linearlayout_height">300dp</dimen>
+    <dimen name="linearlayout_row_width">300dp</dimen>
+    <dimen name="linearlayout_row_height">25dp</dimen>
+    <dimen name="place_width">25dp</dimen>
+    <dimen name="place_height">25dp</dimen>
+    <dimen name="Login_linearlayout_width">200dp</dimen>
+
+    <dimen name="info_textviews_size">80dp</dimen>
+
+
+    <dimen name="win_animation_width">150dp</dimen>
+    <dimen name="win_animation_height">100dp</dimen>
+
+</resources>

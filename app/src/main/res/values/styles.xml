@@ -1,0 +1,53 @@
+<resources>
+
+    <!--
+        Base application theme, dependent on API level. This theme is replaced
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+    -->
+    <style name="AppBaseTheme" parent="Theme.AppCompat.Light">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style>
+
+    <!-- Application theme. -->
+    <style name="AppTheme" parent="AppBaseTheme">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+
+    <style name="row_style">
+
+
+        <item name="android:alpha">1</item>
+        <item name="android:layout_width">@dimen/linearlayout_row_width</item>
+        <item name="android:layout_height">@dimen/linearlayout_row_height</item>
+        <!-- <item name="android:background">@color/container_color</item> -->
+
+    </style>
+
+    <style name="element">
+        <item name="android:layout_width">@dimen/place_width</item>
+        <item name="android:layout_height">@dimen/place_height</item>
+        <!-- <item name="android:background">@color/cell_color</item> -->
+    </style>
+
+
+    <!-- left place -->
+    <style name="element.textview_first_element">
+        <item name="android:layout_gravity">left</item>
+    </style>
+
+
+    <!-- center place -->
+    <style name="element.textview_center_element">
+        <item name="android:layout_centerInParent">true</item>
+    </style>
+
+
+    <!-- right place -->
+    <style name="element.textview_end_element">
+        <item name="android:layout_alignParentRight">true</item>
+    </style>
+</resources>
